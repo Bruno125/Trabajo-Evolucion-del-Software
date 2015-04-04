@@ -19,9 +19,9 @@ namespace EvoGitHubDelex
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("VICTOR Y MILI - EVO 2015-1", "DELEX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             Close();
             //Victor y Mili
-            MessageBox.Show("VICTOR Y MILI - EVO 2015-1","DELEX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
