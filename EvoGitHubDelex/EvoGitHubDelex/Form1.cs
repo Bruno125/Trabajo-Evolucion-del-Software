@@ -21,6 +21,7 @@ namespace EvoGitHubDelex
         {
             Close();
             //Victor y Mili
+            MessageBox.Show("VICTOR Y MILI - EVO 2015-1", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
