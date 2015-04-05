@@ -19,9 +19,11 @@ namespace EvoGitHubDelex
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("VICTOR Y MILI - EVO 2015-1", "DELEX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //Dejen sus messagesboxes confirmando que lo probaron en su casa :D
+            MessageBox.Show("MUCHACHOS YA LO PROBÉ EN MI CASA - ALEX MATIAS DEL PIRÚ", "DELEX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
             Close();
-            //Victor y Mili
+            
         }
     }
 }
