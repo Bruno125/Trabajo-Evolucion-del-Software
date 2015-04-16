@@ -35,7 +35,7 @@ namespace EvoGitHubDelex
         {
             //ALGORITMO SALVAJE e.e
 
-            int x = 10, y = 10, separadorX = 0, auxX = 0, auxY = 0, separadorY = 0;
+            int x = 110, y = 90, separadorX = 0, auxX = 0, auxY = 0, separadorY = 0;
             int numFilas = 10, numCol = 14;
             
 
