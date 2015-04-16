@@ -16,6 +16,7 @@ namespace EvoGitHubDelex
         List<int> xses;
         List<int> yses;
         int w;
+        int defineSeparador;
 
         public Form1()
         {
@@ -23,7 +24,8 @@ namespace EvoGitHubDelex
 
             xses = new List<int>();
             yses = new List<int>();
-            w = 15;
+            w = 19;
+            defineSeparador = 7;
 
             generarCoordenadas();
 
@@ -34,7 +36,7 @@ namespace EvoGitHubDelex
             //ALGORITMO SALVAJE e.e
 
             int x = 10, y = 10, separadorX = 0, auxX = 0, auxY = 0, separadorY = 0;
-            int numFilas = 10, numCol = 12;
+            int numFilas = 10, numCol = 14;
             
 
             for (int i = 0; i < numFilas; i++)
@@ -42,17 +44,18 @@ namespace EvoGitHubDelex
 
                 for (int j = 0; j < numCol; j++)
                 {
-                    if (j != 3 && j != 5)
+                    if (j != 3 && j != 10)
                     {
                         insertarAListas(x + auxX + separadorX, y + auxY + separadorY);
-                        auxX += w;
-                        separadorX = 5;
+                        
                     }
+                    auxX += w;
+                    separadorX += defineSeparador;
                 }
 
                 auxX = 0;
                 separadorX = 0;
-                separadorY = 5;
+                separadorY += defineSeparador;
                 auxY += w;
             }
 
@@ -85,8 +88,8 @@ namespace EvoGitHubDelex
             //AQUI VA LOS DIBUJOS
 
            // buffer.Graphics.FillEllipse(new SolidBrush(Color.Blue),30,30,30,30);
-            //for (int i = 0; i < xses.Count; i++)
-          //      buffer.Graphics.FillRectangle(new SolidBrush(Color.Brown), xses[i], yses[i], w, w);
+            for (int i = 0; i < xses.Count; i++)
+                buffer.Graphics.FillRectangle(new SolidBrush(Color.Brown), xses[i], yses[i], w, w);
 
 
                 buffer.Render(gr);
