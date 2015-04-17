@@ -15,6 +15,7 @@ namespace EvoGitHubDelex
 
         List<int> xses;
         List<int> yses;
+        List<string> ids;
         int w;
         int defineSeparador;
 
@@ -24,7 +25,8 @@ namespace EvoGitHubDelex
 
             xses = new List<int>();
             yses = new List<int>();
-            w = 19;
+            ids = new List<string>();
+            w = 21;
             defineSeparador = 7;
 
             generarCoordenadas();
@@ -36,7 +38,8 @@ namespace EvoGitHubDelex
             //ALGORITMO SALVAJE e.e
 
             int x = 110, y = 90, separadorX = 0, auxX = 0, auxY = 0, separadorY = 0;
-            int numFilas = 10, numCol = 14;
+            int numFilas = 10, numCol = 14,contNumeros=1;
+            char letra = 'A';
             
 
             for (int i = 0; i < numFilas; i++)
@@ -46,13 +49,20 @@ namespace EvoGitHubDelex
                 {
                     if (j != 3 && j != 10)
                     {
-                        insertarAListas(x + auxX + separadorX, y + auxY + separadorY);
+                       
+                        if(contNumeros<10)
+                        insertarAListas(x + auxX + separadorX, y + auxY + separadorY,letra+"0"+contNumeros);
+                        else
+                        insertarAListas(x + auxX + separadorX, y + auxY + separadorY, letra + "" + contNumeros);
                         
+                        contNumeros++;
                     }
                     auxX += w;
                     separadorX += defineSeparador;
                 }
 
+                contNumeros = 1;
+                letra++;
                 auxX = 0;
                 separadorX = 0;
                 separadorY += defineSeparador;
@@ -61,10 +71,11 @@ namespace EvoGitHubDelex
 
         }
 
-        private void insertarAListas(int x,int y)
+        private void insertarAListas(int x,int y,string id)
         {
             xses.Add(x);
             yses.Add(y);
+            ids.Add(id);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -89,7 +100,10 @@ namespace EvoGitHubDelex
 
            // buffer.Graphics.FillEllipse(new SolidBrush(Color.Blue),30,30,30,30);
             for (int i = 0; i < xses.Count; i++)
+            {
                 buffer.Graphics.FillRectangle(new SolidBrush(Color.Brown), xses[i], yses[i], w, w);
+                buffer.Graphics.DrawString(ids[i], new Font("Arial Black", 6), new SolidBrush(Color.White), xses[i]+w/10, yses[i]+w/4);
+            }
 
 
                 buffer.Render(gr);
