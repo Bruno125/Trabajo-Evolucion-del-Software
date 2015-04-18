@@ -38,7 +38,8 @@ namespace EvoGitHubDelex
             //ALGORITMO SALVAJE e.e
 
             int x = 110, y = 90, separadorX = 0, auxX = 0, auxY = 0, separadorY = 0;
-            int numFilas = 10, numCol = 30,contNumeros=1;
+            int numFilas = 10, numCol = 20,contNumeros=1;
+            int primerColBlanca = 4, segundaColBlanca = 15;
             char letra = 'A';
             
 
@@ -47,7 +48,7 @@ namespace EvoGitHubDelex
 
                 for (int j = 0; j < numCol; j++)
                 {
-                    if (j != 3 && j != 26)
+                    if (j != primerColBlanca && j != segundaColBlanca)
                     {
                        
                         if(contNumeros<10)
