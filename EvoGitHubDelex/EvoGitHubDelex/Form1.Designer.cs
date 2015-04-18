@@ -50,7 +50,7 @@
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(588, 0);
+            this.panel1.Location = new System.Drawing.Point(1027, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(156, 464);
             this.panel1.TabIndex = 1;
@@ -65,7 +65,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(744, 464);
+            this.ClientSize = new System.Drawing.Size(1183, 464);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Sala de Cine";
