@@ -7,10 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 
-namespace EvoGitHubDelex
+
+namespace CineEvo.UI
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
 
         List<int> xses;
@@ -19,7 +22,7 @@ namespace EvoGitHubDelex
         int w;
         int defineSeparador;
 
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
 
@@ -85,6 +88,43 @@ namespace EvoGitHubDelex
             MessageBox.Show("MUCHACHOS YA LO PROBÉ EN MI CASA - ALEX MATIAS DEL PIRÚ", "DELEX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             MessageBox.Show("PROBADO - VICTOR CHUQUIHUACCHA", "TIME IS SO UNKIND", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             MessageBox.Show("POR FIN ME INSTALÉ VISUAL U_U", "BRUNO AYBAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //--
+            
+            //ESTO DE ABAJO UTILICE PARA LLENAR LOS ASIENTOS EN LA BASE DE DATOS :D
+            /*
+            try
+            {
+                //Permite conectarme a una BD
+                SqlConnection sqlCon = new SqlConnection();
+                //A qué BD voy a conectar
+                sqlCon.ConnectionString = "Data Source=.;Initial Catalog=CineEvo;Integrated Security=True"; ;
+                //Abrir la conexion para ejecutar comandos SQL
+                sqlCon.Open();
+                //Console.WriteLine("Se conectó a la BD " + sqlCon.ConnectionString);
+
+                for (int sala = 10; sala <= 18; sala++)
+                {
+                    for (int i = 0; i < ids.Count; i++)
+                    {
+                        SqlCommand command = new SqlCommand();
+                        command.Connection = sqlCon;
+                        command.CommandText = "INSERT INTO Asiento(codigo,idSala,estado) VALUES ('" + ids[i] + "',"+sala+",'ACT')";
+                        command.CommandType = CommandType.Text;
+                        command.ExecuteNonQuery();
+
+                    }
+                }
+                //Cerrar la conexion
+                sqlCon.Close();
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }*/
+            
+            
+            
             Close();
             
         }

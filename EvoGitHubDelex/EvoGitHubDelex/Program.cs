@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EvoGitHubDelex
+namespace CineEvo.UI
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace EvoGitHubDelex
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmPrincipal());
             //Cambio por acá --- Prueba ---
         }
     }
