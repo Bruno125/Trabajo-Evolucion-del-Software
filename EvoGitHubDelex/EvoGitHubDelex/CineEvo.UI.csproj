@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,6 +86,47 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumb.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bannerhome.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compraEntradas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quieroCine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1430638298_clapstick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\201542992421544-prin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compraEntradas1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comprar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CineEvo.BE\CineEvo.BE.csproj">
+      <Project>{7c27ae77-8934-4a91-9826-61b0aa0a30ee}</Project>
+      <Name>CineEvo.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CineEvo.BL\CineEvo.BL.csproj">
+      <Project>{2032081d-9783-46d0-bc4e-f6740b14eb9a}</Project>
+      <Name>CineEvo.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CineEvo.DataModel\CineEvo.DataModel.csproj">
+      <Project>{c88fdae0-8ffe-47ee-851b-adbcfbb7e30a}</Project>
+      <Name>CineEvo.DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

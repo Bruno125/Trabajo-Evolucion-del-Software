@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
+
+using CineEvo.DataModel;
+using CineEvo.BL;
 
 
 namespace CineEvo.UI
@@ -21,6 +23,7 @@ namespace CineEvo.UI
         List<string> ids;
         int w;
         int defineSeparador;
+        CineBL objCineBL = new CineBL();
 
         public frmPrincipal()
         {
@@ -132,7 +135,7 @@ namespace CineEvo.UI
         private void timer1_Tick(object sender, EventArgs e)
         {
             Graphics gr = this.CreateGraphics();
-            int Wreal = (int)gr.VisibleClipBounds.Width-panel1.Width;
+            int Wreal = (int)gr.VisibleClipBounds.Width;
             int Hreal = (int)gr.VisibleClipBounds.Height;
             BufferedGraphicsContext espaciobuffer = BufferedGraphicsManager.Current;
             BufferedGraphics buffer = espaciobuffer.Allocate(gr, new Rectangle(0, 0, Wreal, Hreal));
@@ -140,14 +143,47 @@ namespace CineEvo.UI
             //AQUI VA LOS DIBUJOS
 
            // buffer.Graphics.FillEllipse(new SolidBrush(Color.Blue),30,30,30,30);
+            /*
             for (int i = 0; i < xses.Count; i++)
             {
                 buffer.Graphics.FillRectangle(new SolidBrush(Color.Brown), xses[i], yses[i], w, w);
                 buffer.Graphics.DrawString(ids[i], new Font("Arial Black", 6), new SolidBrush(Color.White), xses[i]+w/10, yses[i]+w/4);
             }
-
+            */
 
                 buffer.Render(gr);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            
+            
+            //ComboBox Cine
+            cbCines.DataSource = objCineBL.ListarCines();
+            cbCines.DisplayMember = "nombre";
+            cbCines.ValueMember = "idCine";
+            cbCines.SelectedIndex = -1;
+
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Evento cuando cierra el form
+        }
+
+        private void btnComprar_Click(object sender, EventArgs e)
+        {
+            //SPRINT 1
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            //SPRINT 2
         }
     }
 }
