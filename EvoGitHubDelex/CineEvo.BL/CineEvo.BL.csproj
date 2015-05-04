@@ -47,7 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CineBL.cs" />
+    <Compile Include="FuncionBL.cs" />
+    <Compile Include="PeliculaBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaBL.cs" />
+    <Compile Include="TipoFuncionBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CineEvo.DataModel\CineEvo.DataModel.csproj">

@@ -20,8 +20,14 @@ namespace CineEvo.BL
 
         public List<Cine> ListarCines()
         {
-            
-            return datacontext.Cine.AsNoTracking().ToList();
+            try
+            {
+                return datacontext.Cine.ToList();
+            }
+            catch (Exception E)
+            {
+                throw E;
+            }
         }
 
 

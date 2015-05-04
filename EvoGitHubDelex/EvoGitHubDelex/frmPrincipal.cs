@@ -11,11 +11,12 @@ using System.Data.SqlClient;
 
 using CineEvo.DataModel;
 using CineEvo.BL;
+using CineEvo.UI.Controls;
 
 
 namespace CineEvo.UI
 {
-    public partial class frmPrincipal : Form
+    public partial class frmPrincipal : Form, ControlListener
     {
 
         List<int> xses;
@@ -52,7 +53,7 @@ namespace CineEvo.UI
             for (int i = 0; i < numFilas; i++)
             {
 
-                for (int j = 0; j < numCol; j++)
+                for (int j = 0; j < numCol; j++)    
                 {
                     if (j != primerColBlanca && j != segundaColBlanca)
                     {
@@ -178,12 +179,39 @@ namespace CineEvo.UI
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
+            if (cbCines.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor selecciona un cine.");
+                return;
+            }
+            Cine cine = (Cine)cbCines.SelectedItem;
             //SPRINT 1
+            VistaFunciones VistaFunciones = new VistaFunciones(cine,this);
+            MostrarUserControl(VistaFunciones, VistaFunciones.HasOwnNavigationBar);
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             //SPRINT 2
+        }
+
+        UserControl currentControl;
+        public void MostrarUserControl(UserControl control, bool hasOwnNavigationBar)
+        {
+            currentControl = control;
+            control.Dock = System.Windows.Forms.DockStyle.Fill;
+            control.Location = new System.Drawing.Point(0, 0);
+            control.TabIndex = 15;
+            this.Controls.Add(control);
+            this.Controls.SetChildIndex(control, 0);
+            Header.Visible = !hasOwnNavigationBar;
+        }
+
+
+        public void BackPressed()
+        {
+            currentControl.Hide();
+            Header.Visible = true;
         }
     }
 }
