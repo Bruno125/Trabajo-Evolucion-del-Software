@@ -5,13 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.UI", "EvoGitHubDelex\CineEvo.UI.csproj", "{D6304FC1-C61A-4D7B-AD71-306469090F53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.DataModel", "CineEvo.DataModel\CineEvo.DataModel.csproj", "{C88FDAE0-8FFE-47EE-851B-ADBCFBB7E30A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.BL", "CineEvo.BL\CineEvo.BL.csproj", "{2032081D-9783-46D0-BC4E-F6740B14EB9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.WPF", "CineEvo.WPF\CineEvo.WPF.csproj", "{3C1F4176-F85D-44BD-90E2-2181868686C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.BE", "CineEvo.BE\CineEvo.BE.csproj", "{7C27AE77-8934-4A91-9826-61B0AA0A30EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.DataModel", "CineEvo.DataModel\CineEvo.DataModel.csproj", "{7E96B91A-2267-43F1-8447-28685B100C72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{D6304FC1-C61A-4D7B-AD71-306469090F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6304FC1-C61A-4D7B-AD71-306469090F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6304FC1-C61A-4D7B-AD71-306469090F53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C88FDAE0-8FFE-47EE-851B-ADBCFBB7E30A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C88FDAE0-8FFE-47EE-851B-ADBCFBB7E30A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C88FDAE0-8FFE-47EE-851B-ADBCFBB7E30A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C88FDAE0-8FFE-47EE-851B-ADBCFBB7E30A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2032081D-9783-46D0-BC4E-F6740B14EB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2032081D-9783-46D0-BC4E-F6740B14EB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2032081D-9783-46D0-BC4E-F6740B14EB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{7C27AE77-8934-4A91-9826-61B0AA0A30EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C27AE77-8934-4A91-9826-61B0AA0A30EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C27AE77-8934-4A91-9826-61B0AA0A30EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E96B91A-2267-43F1-8447-28685B100C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E96B91A-2267-43F1-8447-28685B100C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E96B91A-2267-43F1-8447-28685B100C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E96B91A-2267-43F1-8447-28685B100C72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

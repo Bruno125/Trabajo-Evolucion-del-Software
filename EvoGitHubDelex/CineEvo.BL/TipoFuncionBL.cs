@@ -28,7 +28,7 @@ namespace CineEvo.BL
             }
             catch (Exception e)
             {
-                throw new Exception("BL obtener tiposs funcion : " + e.Message,e);
+                throw new Exception("BL obtener tipos funcion : " + e.Message,e);
             }
         }
     }

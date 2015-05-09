@@ -1,6 +1,4 @@
-﻿using CineEvo.BL;
-using CineEvo.DataModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using System.Threading;
+
+using CineEvo.BL;
+using CineEvo.DataModel;
+
 namespace CineEvo.UI.Controls
 {
     public partial class VistaFunciones : CineEvo.UI.Controls.BaseControl
@@ -88,16 +90,31 @@ namespace CineEvo.UI.Controls
         {
             try
             {
+                //SPRINT 1
+                VistaPrecios VistaPrecios = new VistaPrecios();
+                MostrarUserControl(VistaPrecios);
+                //--------------CONTINUAR
+                /*
                 int SelectedIdFuncion =
                     (DgvFunciones.SelectedRows[0].DataBoundItem as FuncionGridWrapper).id_funcion;
                 MessageBox.Show("Id_funcion: " + SelectedIdFuncion);
+                 */
             }
             catch (Exception E)
             {
-                MessageBox.Show("Selecciona una funcion");
+                MessageBox.Show("Selecciona una funcion",E.Message);
             }
         }
-
+        UserControl currentControl;
+        public void MostrarUserControl(UserControl control)
+        {
+            currentControl = control;
+            control.Dock = System.Windows.Forms.DockStyle.Fill;
+            control.Location = new System.Drawing.Point(0, 0);
+            control.TabIndex = 15;
+            this.Controls.Add(control);
+            this.Controls.SetChildIndex(control, 0);
+        }
     }
 
 
@@ -108,5 +125,5 @@ namespace CineEvo.UI.Controls
         public DateTime horario { get; set; }
         public string tipo_funcion { get; set; }
         public string sala { get; set; }
-    }
+    }    
 }

@@ -11,7 +11,7 @@ namespace CineEvo.BL
 {
     public class CineBL
     {
-         private CineEvoEntities datacontext;
+        private CineEvoEntities datacontext;
 
         public CineBL()
         {
