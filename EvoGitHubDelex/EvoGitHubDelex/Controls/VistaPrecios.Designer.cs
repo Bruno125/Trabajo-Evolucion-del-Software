@@ -30,10 +30,10 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.DgvPrecios = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPrecios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +65,18 @@
             this.DgvPrecios.Size = new System.Drawing.Size(612, 157);
             this.DgvPrecios.TabIndex = 8;
             // 
+            // label2
+            // 
+            this.label2.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            this.label2.Location = new System.Drawing.Point(13, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 24);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Entradas";
+            // 
             // nombre
             // 
             this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -89,23 +101,10 @@
             "2",
             "3",
             "4",
-            "5",
-            "PRUEBA"});
+            "5"});
             this.cantidad.Name = "cantidad";
             this.cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // label2
-            // 
-            this.label2.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.label2.Location = new System.Drawing.Point(13, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 24);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Entradas";
             // 
             // VistaPrecios
             // 

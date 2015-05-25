@@ -91,8 +91,14 @@ namespace CineEvo.UI.Controls
             try
             {
                 //SPRINT 1
-                VistaPrecios VistaPrecios = new VistaPrecios();
+                VistaPrecios VistaPrecios = new VistaPrecios(cine, ControlListener);                
                 MostrarUserControl(VistaPrecios);
+
+                //frmPrecios frmP = new frmPrecios();
+                //frmP.Show();
+
+
+
                 //--------------CONTINUAR
                 /*
                 int SelectedIdFuncion =

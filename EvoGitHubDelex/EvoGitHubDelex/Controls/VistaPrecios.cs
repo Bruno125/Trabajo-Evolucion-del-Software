@@ -18,12 +18,27 @@ namespace CineEvo.UI.Controls
         TipoEntradaBL objTipoEntradaBL = TipoEntradaBL.ObtenerInstancia();
         Cine cine;
 
+        /*
+        Llenar con data temporal
+        update Funcion
+        set fechaFuncion='2015-24-05 00:00:00.000'
+        */
+
+        //Pendiente
+        //Recibir el tipo de pelicula seleccionada de la anterior ventana
+        //Corregir doble generacion del header del panel
+
+        //Datos recibidos
+        public String tipo_funcion;
+
+
         public VistaPrecios(Cine cine, ControlListener ControlListener)
             : base(ControlListener)
         {
             InitializeComponent();
             this.cine = cine;
             SetTitulo(cine.nombre);
+            //SetTitulo(tipo_funcion);
         }
         public VistaPrecios()
         {
@@ -41,7 +56,14 @@ namespace CineEvo.UI.Controls
                     select new FuncionGridWrapperEntrada()
                     {
                         nombre = e.nombre,
+                        //El precio varia dependiendo del tipo de funcion (2D,3D)
                         precio = e.precio
+                        /*
+                         * if(tipo_pelicula==1)
+                         * {
+                         * precio=precio*1.25;
+                         * }
+                         */
                     };
 
                 GridData = data.ToList();
