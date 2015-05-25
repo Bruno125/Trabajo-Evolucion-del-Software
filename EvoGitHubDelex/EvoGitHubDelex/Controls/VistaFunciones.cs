@@ -91,7 +91,9 @@ namespace CineEvo.UI.Controls
             try
             {
                 //SPRINT 1
-                VistaPrecios VistaPrecios = new VistaPrecios(cine, ControlListener);                
+                VistaPrecios VistaPrecios = new VistaPrecios(cine, ControlListener);
+                VistaPrecios.tipo_funcion = DgvFunciones.SelectedRows[0].Cells[3].Value.ToString();
+                //SI LO TRAE :D
                 MostrarUserControl(VistaPrecios);
 
                 //frmPrecios frmP = new frmPrecios();

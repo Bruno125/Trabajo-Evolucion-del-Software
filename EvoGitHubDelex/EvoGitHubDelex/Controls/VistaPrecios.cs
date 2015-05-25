@@ -37,8 +37,8 @@ namespace CineEvo.UI.Controls
         {
             InitializeComponent();
             this.cine = cine;
-            SetTitulo(cine.nombre);
-            //SetTitulo(tipo_funcion);
+            //SetTitulo(cine.nombre);
+            SetTitulo(tipo_funcion);
         }
         public VistaPrecios()
         {
