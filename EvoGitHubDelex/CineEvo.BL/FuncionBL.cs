@@ -31,5 +31,9 @@ namespace CineEvo.BL
                 throw new Exception("BL obtener funciones : " + e.Message,e);
             }
         }
+        public Funcion ObtenerFuncion(int id)
+        {
+            return DataContext.Funcion.FirstOrDefault(x => x.idFuncion == id);
+        }
     }
 }

@@ -186,8 +186,13 @@ namespace CineEvo.UI
             }
             Cine cine = (Cine)cbCines.SelectedItem;
             //SPRINT 1
-            VistaFunciones VistaFunciones = new VistaFunciones(cine,this);
+            /*
+             * VistaFunciones VistaFunciones = new VistaFunciones(cine,this);
             MostrarUserControl(VistaFunciones, VistaFunciones.HasOwnNavigationBar);
+             */
+            frmFunciones frmF = new frmFunciones();
+            frmF.cine = cine;
+            frmF.Show();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)

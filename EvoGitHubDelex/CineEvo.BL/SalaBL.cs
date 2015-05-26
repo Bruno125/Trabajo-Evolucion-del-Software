@@ -31,5 +31,9 @@ namespace CineEvo.BL
                 throw new Exception("BL obtener sala : " + e.Message,e);
             }
         }
+        public Sala ObtenerSala(int id)
+        {
+            return DataContext.Sala.FirstOrDefault(x => x.idSala == id);
+        }
     }
 }

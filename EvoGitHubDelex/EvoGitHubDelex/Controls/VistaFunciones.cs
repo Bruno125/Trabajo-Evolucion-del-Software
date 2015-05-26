@@ -68,7 +68,7 @@ namespace CineEvo.UI.Controls
 
                 GridData = data.ToList();
             }
-            catch (Exception E)
+            catch (Exception)
             {
                 return null;
             }
