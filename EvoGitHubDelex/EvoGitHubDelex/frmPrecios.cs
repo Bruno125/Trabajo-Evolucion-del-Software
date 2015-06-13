@@ -71,11 +71,13 @@ namespace CineEvo.UI
                 cmb.HeaderText = "Cantidad";
                 cmb.Name = "cmb";
                 cmb.MaxDropDownItems = 4;
+                cmb.Items.Add("0");
                 cmb.Items.Add("1");
                 cmb.Items.Add("2");
                 cmb.Items.Add("3");
                 cmb.Items.Add("4");
                 cmb.Items.Add("5");
+               
                 dgvPrecios.Columns.Add(cmb);
                 //Columna de total
                 DataGridViewTextBoxColumn cmb2 = new DataGridViewTextBoxColumn();

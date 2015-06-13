@@ -37,6 +37,7 @@ namespace CineEvo.UI
 
         public void CargarData()
         {
+            
             IList<Funcion> funciones = objFuncionBL.ObtenerFunciones();
             IList<Pelicula> peliculas = objPeliculaBL.ObtenerPeliculas();
             IList<TipoFuncion> tipos_funcion = objTipoFuncionBL.ObtenerTiposFuncion();

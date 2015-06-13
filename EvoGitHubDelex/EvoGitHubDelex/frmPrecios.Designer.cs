@@ -58,13 +58,14 @@
             // btnSiguiente
             // 
             this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSiguiente.BackColor = System.Drawing.Color.White;
             this.btnSiguiente.BackgroundImage = global::CineEvo.UI.Properties.Resources.siguiente;
             this.btnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSiguiente.Location = new System.Drawing.Point(452, 292);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(142, 50);
             this.btnSiguiente.TabIndex = 10;
-            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.UseVisualStyleBackColor = false;
             // 
             // label1
             // 

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.dgvFunciones = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSiguiente = new System.Windows.Forms.Button();
             this.Pelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoFuncion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSiguiente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,29 +50,6 @@
             this.dgvFunciones.Name = "dgvFunciones";
             this.dgvFunciones.Size = new System.Drawing.Size(582, 228);
             this.dgvFunciones.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.label2.Location = new System.Drawing.Point(12, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 24);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Funciones";
-            // 
-            // btnSiguiente
-            // 
-            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSiguiente.BackgroundImage = global::CineEvo.UI.Properties.Resources.siguiente;
-            this.btnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSiguiente.Location = new System.Drawing.Point(451, 315);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(142, 50);
-            this.btnSiguiente.TabIndex = 7;
-            this.btnSiguiente.UseVisualStyleBackColor = true;
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // Pelicula
             // 
@@ -103,6 +80,29 @@
             this.Sala.HeaderText = "Sala";
             this.Sala.Name = "Sala";
             this.Sala.ReadOnly = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            this.label2.Location = new System.Drawing.Point(12, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 24);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Funciones";
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSiguiente.BackgroundImage = global::CineEvo.UI.Properties.Resources.siguiente;
+            this.btnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSiguiente.Location = new System.Drawing.Point(451, 315);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(142, 50);
+            this.btnSiguiente.TabIndex = 7;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // frmFunciones
             // 

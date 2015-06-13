@@ -31,5 +31,18 @@ namespace CineEvo.BL
                 throw new Exception("BL obtener tipos entrada : " + e.Message, e);
             }
         }
+
+        public IEnumerable<Object> ObtenerTiposEntradas(double precioFuncion)
+        {
+            return (from f in DataContext.TipoEntrada
+                    where f.estado == "ACT" 
+                    select new
+                    {
+                        nombre_tipo_entrada=f.nombre,
+                        precio=f.precio+precioFuncion,
+                        id_tipo_entrada=f.idTipoEntrada
+                    }).ToList();
+        }
+
     }
 }
