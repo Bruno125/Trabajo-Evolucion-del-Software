@@ -28,12 +28,12 @@ namespace CineEvo.BL
             }
             catch (Exception e)
             {
-                throw new Exception("BL obtener sala : " + e.Message,e);
+                throw new Exception("BL obtener salas : " + e.Message,e);
             }
         }
         public Sala ObtenerSala(int id)
         {
-            return DataContext.Sala.FirstOrDefault(x => x.idSala == id);
+            return DataContext.Sala.FirstOrDefault(x => x.idSala == id && x.estado=="ACT");
         }
     }
 }

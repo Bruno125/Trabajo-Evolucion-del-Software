@@ -35,6 +35,7 @@ namespace CineEvo.UI
         int columnaSeleccionada;
         int filaSeleccionada;
         bool cambioValor;
+        int idSala;
 
         public frmPrincipal()
         {
@@ -48,6 +49,7 @@ namespace CineEvo.UI
             w = 21;
             defineSeparador = 7;
             filaSeleccionada = -1;
+            idSala = -1;
 
             generarCoordenadas();
 
@@ -167,8 +169,7 @@ namespace CineEvo.UI
 
                 buffer.Render(gr);
         }
-
-
+        
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -187,6 +188,11 @@ namespace CineEvo.UI
             PosicionesTamaniosControles();
             ConfigurarControles(dgvFunciones);
            ConfigurarControles(dgvPrecios);
+
+           lbTotalNum.Visible = false;
+            lbTotal.Visible=false;
+           lbTotalNum.Parent = this;
+           lbTotal.Parent = this;
 
         }
 
@@ -227,6 +233,13 @@ namespace CineEvo.UI
             else
                 picQuieroCine.Visible = true;
 
+            //--btnConsultar
+            if (btnConsultar.Visible)
+                btnConsultar.Visible = false;
+            else
+                btnConsultar.Visible = true;
+
+
             //--panel Celeste
             if (panelCeleste.Visible)
                 panelCeleste.Visible = false;
@@ -234,12 +247,7 @@ namespace CineEvo.UI
                 panelCeleste.Visible = true;
 
 
-            //--btnConsultar
-            if (btnConsultar.Visible)
-                btnConsultar.Visible = false;
-            else
-                btnConsultar.Visible = true;
-
+           
             //--picComprar
             if (picComprar.Visible)
                 picComprar.Visible = false;
@@ -339,8 +347,7 @@ namespace CineEvo.UI
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
         }
-          
-    
+              
         public void dgvFuncionesConfigurar()
         {
             DataGridViewCellStyle csLetras = new DataGridViewCellStyle();
@@ -442,33 +449,98 @@ namespace CineEvo.UI
             {
                 ((DataGridViewComboBoxCell)r.Cells["dgvCbCantidad"]).Value=strSelectedValue;       
                
-            }
-
-
+            }        
             //dgvPrecios.ClearSelection();
 
         }
-
-
-
-
+        
          private void DesaparecerAparecerPagina2()
         {
+            
              //DGVFUNCIONES
             if (dgvFunciones.Visible)
                 dgvFunciones.Visible = false;
             else
                 dgvFunciones.Visible = true;
 
+         
              //PRECIOS
             if (dgvPrecios.Visible)
                 dgvPrecios.Visible = false;
             else
                 dgvPrecios.Visible = true;
 
-         
+            if (lbTotal.Parent.Equals(dgvPrecios))
+            {
+                lbTotal.Parent = this;
+                lbTotal.Visible = false;
+            }
+            else
+            {
+                lbTotal.Visible = true;
+                lbTotal.Parent = dgvPrecios;
+            }
+
+            if (lbTotalNum.Parent.Equals(dgvPrecios))
+            {
+                lbTotalNum.Visible = false;
+                lbTotalNum.Parent = this;
+            }
+            else
+            {
+                lbTotalNum.Visible = true;
+                lbTotalNum.Parent = dgvPrecios;
+            }
+           // lbTotal.Parent = dgvPrecios;
+            lbTotal.Left = 420;
+            lbTotal.Top = 70;
+
+             if(nroHojaActual==3)
+            lbTotalNum.Text = "0";            
+            lbTotalNum.Left = 510;
+            lbTotalNum.Top = 70;
 
         }
+
+         private void DesaparecerAparecerPagina3()
+         {
+              //PRECIOS
+             if (dgvPrecios.Visible)
+                 dgvPrecios.Visible = false;
+             else
+                 dgvPrecios.Visible = true;
+
+             if (lbTotal.Parent.Equals(dgvPrecios))
+             {
+                 lbTotal.Parent = this;
+                 lbTotal.Visible = false;
+             }
+             else
+             {
+                 lbTotal.Visible = true;
+                 lbTotal.Parent = dgvPrecios;
+             }
+
+             if (lbTotalNum.Parent.Equals(dgvPrecios))
+             {
+                 lbTotalNum.Visible = false;
+                 lbTotalNum.Parent = this;
+             }
+             else
+             {
+                 lbTotalNum.Visible = true;
+                 lbTotalNum.Parent = dgvPrecios;
+             }
+             // lbTotal.Parent = dgvPrecios;
+             lbTotal.Left = 420;
+             lbTotal.Top = 70;
+
+             lbTotalNum.Left = 510;
+             lbTotalNum.Top = 70;
+
+
+
+         }
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
@@ -511,8 +583,7 @@ namespace CineEvo.UI
             this.Controls.SetChildIndex(control, 0);
             Header.Visible = !hasOwnNavigationBar;
         }
-
-
+        
         public void BackPressed()
         {
             currentControl.Hide();
@@ -529,6 +600,10 @@ namespace CineEvo.UI
                 //ELIMINANDO LAS COLUMNAS INNECESARIAS
                 dgvPrecios.Columns.Remove("dgvCbCantidad");
                 dgvPrecios.Columns.Remove("dgvCbTotal");
+            }
+            else if(nroHojaActual==4)
+            {
+                DesaparecerAparecerPagina3();
             }
 
             nroHojaActual--;
@@ -548,6 +623,7 @@ namespace CineEvo.UI
                 //TODO LO QUE OCASIANRARA ESTO
                 TipoEntradaBL objTipoEntradaBL = TipoEntradaBL.ObtenerInstancia();
                 double precio = Convert.ToDouble(dgvFunciones.SelectedRows[0].Cells["precio"].Value.ToString());
+                idSala = Convert.ToInt32(dgvFunciones.SelectedRows[0].Cells["id_sala"].Value.ToString());
                 //DE AQUI CAPTURO TODO PERO SOLO PRECIO POR AHORA
                 dgvPrecios.DataSource = objTipoEntradaBL.ObtenerTiposEntradas(precio);
                 dgvPreciosConfigurar();
@@ -559,14 +635,35 @@ namespace CineEvo.UI
             }
             else if(nroHojaActual==3)//Hoja de precios
             {
-                return;
+                if (Convert.ToDouble(lbTotalNum.Text) == 0)
+                {
+                    MessageBox.Show("Seleccione una cantidad de entradas para poder continuar", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                int cantGeneral=Convert.ToInt32(dgvPrecios.Rows[0].Cells["dgvCbCantidad"].Value.ToString());
+                int cantNiniosViejos = Convert.ToInt32(dgvPrecios.Rows[1].Cells["dgvCbCantidad"].Value.ToString());
+
+                SalaBL objSalaBL = SalaBL.ObtenerInstancia();
+                Sala consultar=objSalaBL.ObtenerSala(idSala);
+
+                if(consultar.asientosLibres<(cantGeneral+cantNiniosViejos))
+                {
+                    MessageBox.Show("No existen asientos libres disponibles para la cantidad solicitada - Existen "+consultar.asientosLibres+" asientos libres", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                //AQUI SI ENTRARIA A LA OTRA PANTALLA DE MAPA
+                DesaparecerAparecerPagina3();
+                //return;
+                //
+
             }
 
 
             nroHojaActual++;
         }
-
-
+        
         private void dgvPrecios_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             /*
@@ -599,6 +696,22 @@ namespace CineEvo.UI
                     int cantidad = Convert.ToInt32(dgvPrecios.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
                     double precio=Convert.ToDouble(dgvPrecios.Rows[e.RowIndex].Cells["precio"].Value.ToString());
                     dgvPrecios.Rows[e.RowIndex].Cells["dgvCbTotal"].Value = (cantidad*precio).ToString();
+
+                    if (dgvPrecios.Rows[0].Cells["dgvCbTotal"].Value == null)
+                    {
+                        dgvPrecios.Rows[0].Cells["dgvCbCantidad"].Value = "0";
+                        dgvPrecios.Rows[0].Cells["dgvCbTotal"].Value = "0";
+                    }
+                    if (dgvPrecios.Rows[1].Cells["dgvCbTotal"].Value == null)
+                    {
+                        dgvPrecios.Rows[1].Cells["dgvCbCantidad"].Value = "0";
+                        dgvPrecios.Rows[1].Cells["dgvCbTotal"].Value = "0";
+                    }
+
+                    double precio1 = Convert.ToDouble(dgvPrecios.Rows[0].Cells["dgvCbTotal"].Value.ToString());
+                    double precio2 = Convert.ToDouble(dgvPrecios.Rows[1].Cells["dgvCbTotal"].Value.ToString());
+                    lbTotalNum.Text = (precio1 + precio2)+"";
+
                  }
             }
 

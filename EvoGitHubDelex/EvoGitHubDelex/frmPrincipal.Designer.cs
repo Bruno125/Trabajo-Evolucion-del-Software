@@ -57,6 +57,8 @@
             this.picCinepolis = new System.Windows.Forms.PictureBox();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.totalPrecio = new System.Windows.Forms.Timer(this.components);
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.lbTotalNum = new System.Windows.Forms.Label();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelCeleste.SuspendLayout();
@@ -243,7 +245,7 @@
             this.dgvPrecios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrecios.Location = new System.Drawing.Point(12, 114);
             this.dgvPrecios.Name = "dgvPrecios";
-            this.dgvPrecios.Size = new System.Drawing.Size(21, 19);
+            this.dgvPrecios.Size = new System.Drawing.Size(49, 54);
             this.dgvPrecios.TabIndex = 15;
             this.dgvPrecios.Visible = false;
             this.dgvPrecios.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrecios_CellValueChanged);
@@ -361,6 +363,28 @@
             this.totalPrecio.Interval = 1;
             this.totalPrecio.Tick += new System.EventHandler(this.totalPrecio_Tick);
             // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotal.Location = new System.Drawing.Point(20, 133);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(33, 14);
+            this.lbTotal.TabIndex = 9;
+            this.lbTotal.Text = "Total";
+            this.lbTotal.Visible = false;
+            // 
+            // lbTotalNum
+            // 
+            this.lbTotalNum.AutoSize = true;
+            this.lbTotalNum.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalNum.Location = new System.Drawing.Point(28, 163);
+            this.lbTotalNum.Name = "lbTotalNum";
+            this.lbTotalNum.Size = new System.Drawing.Size(33, 14);
+            this.lbTotalNum.TabIndex = 141;
+            this.lbTotalNum.Text = "Total";
+            this.lbTotalNum.Visible = false;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -369,6 +393,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(751, 488);
+            this.Controls.Add(this.lbTotalNum);
+            this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.picBack);
             this.Controls.Add(this.pBar);
@@ -440,6 +466,8 @@
         private System.Windows.Forms.PictureBox picBack;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Timer totalPrecio;
+        private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.Label lbTotalNum;
     }
 }
 
