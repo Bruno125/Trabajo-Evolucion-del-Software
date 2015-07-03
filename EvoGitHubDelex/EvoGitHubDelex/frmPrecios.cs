@@ -11,6 +11,7 @@ using System.Windows.Forms;
 //Importaciones
 using CineEvo.BL;
 using CineEvo.DataModel;
+using CineEvo.BE;
 
 namespace CineEvo.UI
 {
@@ -20,7 +21,7 @@ namespace CineEvo.UI
 
         //Recibe data
         public Cine cine;
-        public Funcion funcion ;
+        public CFuncion funcion ;
         public Pelicula pelicula;
         public Sala sala;
         public double precio;

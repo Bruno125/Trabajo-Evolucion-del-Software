@@ -6,30 +6,64 @@ using System.Threading.Tasks;
 
 using System.Data.Entity;
 using CineEvo.DataModel;
+using  CineEvo.BL.Base;
 
 namespace CineEvo.BL
 {
-    public class CineBL
+    public class CineBL : BaseBL<Cine,int>
     {
-        private CineEvoEntities datacontext;
-
-        public CineBL()
+        
+         #region Singleton declaration
+        private CineEvoEntities DataContext;
+        private static CineBL instance = new CineBL();
+        private CineBL() { }
+        public static CineBL ObtenerInstancia()
         {
-            datacontext = new CineEvoEntities();
+            instance.DataContext = new CineEvoEntities();
+            return instance;
+        }
+        #endregion
+
+        public void Insertar(Cine Entity)
+        {
+            //No se realizaran operaciones de insercion para esta entidad
+            throw new NotImplementedException();
         }
 
-        public List<Cine> ListarCines()
+        public void Actualizar(Cine Entity)
+        {
+            //No se realizaran operaciones de actualizacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int Id)
+        {
+            //No se realizaran operaciones de eliminacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public Cine Obtener(int Id)
         {
             try
             {
-                return datacontext.Cine.ToList();
+                return DataContext.Cine.Where(x => x.idCine == Id).Single();
             }
-            catch (Exception E)
+            catch (Exception e)
             {
-                throw E;
+                throw new Exception("CineBl - obtener : " + e.Message, e);
             }
         }
 
-
+        public List<Cine> Listar()
+        {
+            try
+            {
+                return instance.DataContext.Cine.ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("CineBL - listar : " + e.Message, e);
+            }
+        }
     }
 }

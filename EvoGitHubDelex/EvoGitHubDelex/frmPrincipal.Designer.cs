@@ -75,7 +75,6 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Header
             // 
@@ -202,7 +201,6 @@
             this.label3.Size = new System.Drawing.Size(113, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "- Películas y detalles";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 

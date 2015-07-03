@@ -42,9 +42,9 @@ namespace CineEvo.UI.Controls
             try
             {
                 IList<Funcion> funciones = objFuncionBL.ObtenerFunciones();
-                IList<Pelicula> peliculas = objPeliculaBL.ObtenerPeliculas();
+                IList<Pelicula> peliculas = objPeliculaBL.Listar();
                 IList<TipoFuncion> tipos_funcion = objTipoFuncionBL.ObtenerTiposFuncion();
-                IList<Sala> salas = objSalaBL.ObtenerSalas();
+                IList<Sala> salas = objSalaBL.Listar();
                 DateTime now = DateTime.Now;
                 var data =
                     from p in peliculas

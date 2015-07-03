@@ -1,4 +1,5 @@
-﻿using CineEvo.DataModel;
+﻿using CineEvo.BL.Base;
+using CineEvo.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CineEvo.BL
 {
-    public class PeliculaBL
+    public class PeliculaBL : BaseBL<Pelicula,int>
     {
          #region Singleton declaration
         private CineEvoEntities DataContext;
@@ -20,7 +21,37 @@ namespace CineEvo.BL
         }
         #endregion
 
-        public IList<Pelicula> ObtenerPeliculas()
+        public void Insertar(Pelicula Entity)
+        {
+            //No se realizaran operaciones de insercion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public void Actualizar(Pelicula Entity)
+        {
+            //No se realizaran operaciones de actualizacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int Id)
+        {
+            //No se realizaran operaciones de eliminacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public Pelicula Obtener(int Id)
+        {
+            try
+            {
+                return DataContext.Pelicula.FirstOrDefault(x => x.idPelicula == Id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("PeliculaBL - obtener : " + e.Message, e);
+            }
+        }
+
+        public List<Pelicula> Listar()
         {
             try
             {
@@ -28,12 +59,8 @@ namespace CineEvo.BL
             }
             catch (Exception e)
             {
-                throw new Exception("BL obtener funciones : " + e.Message,e);
+                throw new Exception("PeliculaBL - listar : " + e.Message, e);
             }
-        }
-        public Pelicula ObtenerPelicula(int id)
-        {
-            return DataContext.Pelicula.FirstOrDefault(x => x.idPelicula == id);
         }
     }
 }

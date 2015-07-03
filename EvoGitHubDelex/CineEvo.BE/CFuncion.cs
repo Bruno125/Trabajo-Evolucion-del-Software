@@ -12,6 +12,9 @@ namespace CineEvo.BE
         public string NombrePelicula { get; set; }
         public DateTime horario { get; set; }
         public string tipo_funcion { get; set; }
+        public int id_tipo_funcion { get; set; }
         public string sala { get; set; }
+        public double precio { get; set; }
+        public int id_sala { get; set; }
     }
 }

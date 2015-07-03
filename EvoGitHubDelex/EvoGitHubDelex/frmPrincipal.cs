@@ -26,9 +26,9 @@ namespace CineEvo.UI
         List<string> ids;
         int w;
         int defineSeparador;
-        
+
         //atributos necesarios principales
-        CineBL objCineBL = new CineBL();
+        CineBL objCineBL = CineBL.ObtenerInstancia();
         int idCineSeleccionado;
         int nroHojaActual; //En que escena del formulario se esta actualmente
        
@@ -149,7 +149,7 @@ namespace CineEvo.UI
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             //ComboBox Cine
-            cbCines.DataSource = objCineBL.ListarCines();
+            cbCines.DataSource = objCineBL.Listar();
             cbCines.DisplayMember = "nombre";
             cbCines.ValueMember = "idCine";
             cbCines.SelectedIndex = -1;
@@ -396,7 +396,7 @@ namespace CineEvo.UI
             lbNombreCine.Text = ((Cine)cbCines.SelectedItem).nombre;
 
             FuncionBL objFuncionBL = FuncionBL.ObtenerInstancia();
-            dgvFunciones.DataSource = objFuncionBL.ObtenerFuncionesRenovado(idCineSeleccionado);
+            dgvFunciones.DataSource = objFuncionBL.ListarFromCine(idCineSeleccionado);
             
             dgvFuncionesConfigurar();
            

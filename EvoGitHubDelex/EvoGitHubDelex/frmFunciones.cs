@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using CineEvo.BL;
 using CineEvo.DataModel;
+using CineEvo.BE;
 
 namespace CineEvo.UI
 {
@@ -39,9 +40,9 @@ namespace CineEvo.UI
         {
             
             IList<Funcion> funciones = objFuncionBL.ObtenerFunciones();
-            IList<Pelicula> peliculas = objPeliculaBL.ObtenerPeliculas();
+            IList<Pelicula> peliculas = objPeliculaBL.Listar();
             IList<TipoFuncion> tipos_funcion = objTipoFuncionBL.ObtenerTiposFuncion();
-            IList<Sala> salas = objSalaBL.ObtenerSalas();
+            IList<Sala> salas = objSalaBL.Listar();
             DateTime now = DateTime.Now;
             var data =
                 from p in peliculas
@@ -123,9 +124,9 @@ namespace CineEvo.UI
             string tipo_funcion = dgvFunciones.SelectedRows[0].Cells[6].Value.ToString();
             
             //-----Preparo la data-----
-            Funcion funcion = objFuncionBL.ObtenerFuncion(id_funcion);//Testing
-            Pelicula pelicula = objPeliculaBL.ObtenerPelicula(id_pelicula);//Testing
-            Sala sala = objSalaBL.ObtenerSala(id_sala);//Testing
+            CFuncion funcion = objFuncionBL.Obtener(id_funcion);//Testing
+            Pelicula pelicula = objPeliculaBL.Obtener(id_pelicula);//Testing
+            Sala sala = objSalaBL.Obtener(id_sala);//Testing
 
             //-----Creo el formulario-----
             frmPrecios frmP = new frmPrecios();

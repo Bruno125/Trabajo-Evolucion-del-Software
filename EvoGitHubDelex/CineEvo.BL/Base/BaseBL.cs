@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CineEvo.BL.Base
 {
-    interface BaseBL<E, ID>
+    public interface BaseBL<E, ID>
     {
         void Insertar(E Entity);
         void Actualizar(E Entity);
