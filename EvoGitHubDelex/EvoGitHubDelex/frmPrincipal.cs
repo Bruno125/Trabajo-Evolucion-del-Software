@@ -146,38 +146,8 @@ namespace CineEvo.UI
             
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Graphics gr = this.CreateGraphics();
-            int Wreal = (int)gr.VisibleClipBounds.Width;
-            int Hreal = (int)gr.VisibleClipBounds.Height;
-            BufferedGraphicsContext espaciobuffer = BufferedGraphicsManager.Current;
-            BufferedGraphics buffer = espaciobuffer.Allocate(gr, new Rectangle(0, 0, Wreal, Hreal));
-            buffer.Graphics.Clear(this.BackColor);
-            //AQUI VA LOS DIBUJOS
-
-           // buffer.Graphics.FillEllipse(new SolidBrush(Color.Blue),30,30,30,30);
-            /*
-            for (int i = 0; i < xses.Count; i++)
-            {
-                buffer.Graphics.FillRectangle(new SolidBrush(Color.Brown), xses[i], yses[i], w, w);
-                buffer.Graphics.DrawString(ids[i], new Font("Arial Black", 6), new SolidBrush(Color.White), xses[i]+w/10, yses[i]+w/4);
-            }
-            */
-
-                buffer.Render(gr);
-        }
-
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            
-            
             //ComboBox Cine
             cbCines.DataSource = objCineBL.ListarCines();
             cbCines.DisplayMember = "nombre";
@@ -198,68 +168,25 @@ namespace CineEvo.UI
         private void DesaparecerAparecerPagina1()
         {
             //--picCanchita
-            if (picCanchita.Visible)
-                picCanchita.Visible = false;
-            else
-                picCanchita.Visible = true;
-
+            picCanchita.Visible = !picCanchita.Visible;
             //--label Cartelera
-            if (lbCartelera.Visible)
-                lbCartelera.Visible = false;
-            else
-                lbCartelera.Visible = true;
-
+            lbCartelera.Visible = !lbCartelera.Visible;
             //--picBanner de Abajo
-            if (picBannerAbajo.Visible)
-                picBannerAbajo.Visible = false;
-            else
-                picBannerAbajo.Visible = true;
-
+            picBannerAbajo.Visible = !picBannerAbajo.Visible;
             //--picLogoCinepolis
-            if (picCinepolis.Visible)
-                picCinepolis.Visible = false;
-            else
-                picCinepolis.Visible = true;
-
+            picCinepolis.Visible = !picCinepolis.Visible;
             //--pic Quiero Cine
-            if (picQuieroCine.Visible)
-                picQuieroCine.Visible = false;
-            else
-                picQuieroCine.Visible = true;
-
+            picQuieroCine.Visible = !picQuieroCine.Visible;
             //--panel Celeste
-            if (panelCeleste.Visible)
-                panelCeleste.Visible = false;
-            else
-                panelCeleste.Visible = true;
-
-
+            panelCeleste.Visible = !panelCeleste.Visible;
             //--btnConsultar
-            if (btnConsultar.Visible)
-                btnConsultar.Visible = false;
-            else
-                btnConsultar.Visible = true;
-
+            btnConsultar.Visible = !btnConsultar.Visible;
             //--picComprar
-            if (picComprar.Visible)
-                picComprar.Visible = false;
-            else
-                picComprar.Visible = true;
-
+            picComprar.Visible = !picComprar.Visible;
             //--picBotonComprar
-            if (picBotonComprar.Visible)
-                picBotonComprar.Visible = false;
-            else
-                picBotonComprar.Visible = true;
-
+            picBotonComprar.Visible = !picBotonComprar.Visible;
             //LabelNombre
-            if (lbNombreCine.Visible)
-                lbNombreCine.Visible = false;
-            else
-            {
-                lbNombreCine.Visible = true;
-            }
-
+            lbNombreCine.Visible = !lbNombreCine.Visible;
             //combos y labels
             if (cbCines.Visible && lbPreferencia.Visible && lbSeleccione.Visible)
             {
@@ -273,27 +200,12 @@ namespace CineEvo.UI
                 lbPreferencia.Visible = true;
                 lbSeleccione.Visible = true;
             }
-
-
-
             //aparecer dgvFunciones
-            if (dgvFunciones.Visible)
-                dgvFunciones.Visible = false;
-            else
-                dgvFunciones.Visible = true;
-
+            dgvFunciones.Visible = !dgvFunciones.Visible;
             //PicDelBACK
-            if (picBack.Visible)
-                picBack.Visible = false;
-            else
-                picBack.Visible = true;
-
+            picBack.Visible = !picBack.Visible;
             //BOTON
-            if (btnSiguiente.Visible)
-                btnSiguiente.Visible = false;
-            else
-                btnSiguiente.Visible = true;
-                       
+            btnSiguiente.Visible = !btnSiguiente.Visible;
         }
 
         public void PosicionesTamaniosControles()
