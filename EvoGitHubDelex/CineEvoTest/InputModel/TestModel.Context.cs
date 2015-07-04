@@ -26,5 +26,8 @@ namespace CineEvoTest.InputModel
         }
     
         public virtual DbSet<AsientoNullTest> AsientoNullTest { get; set; }
+        public virtual DbSet<AsientosPorSalaTest> AsientosPorSalaTest { get; set; }
+        public virtual DbSet<FuncionsPorCineTest> FuncionsPorCineTest { get; set; }
+        public virtual DbSet<FuncionNullTest> FuncionNullTest { get; set; }
     }
 }

@@ -105,7 +105,8 @@ using CineEvo.DataModel.Util;
                         id_tipo_funcion = f.TipoFuncion.idTipoFuncion,
                         sala = f.Sala.nombre,
                         id_sala = f.Sala.idSala,
-                        precio = f.TipoFuncion.precio
+                        precio = f.TipoFuncion.precio,
+
                     };
         }
 

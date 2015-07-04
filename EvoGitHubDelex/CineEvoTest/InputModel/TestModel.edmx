@@ -11,8 +11,29 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="AsientosPorSalaTest">
+          <Key>
+            <PropertyRef Name="idSala" />
+          </Key>
+          <Property Name="idSala" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuncionNullTest">
+          <Key>
+            <PropertyRef Name="idFuncion" />
+          </Key>
+          <Property Name="idFuncion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuncionsPorCineTest">
+          <Key>
+            <PropertyRef Name="idCine" />
+          </Key>
+          <Property Name="idCine" Type="int" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="CineEvoTestModelStoreContainer">
           <EntitySet Name="AsientoNullTest" EntityType="Self.AsientoNullTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsientosPorSalaTest" EntityType="Self.AsientosPorSalaTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuncionNullTest" EntityType="Self.FuncionNullTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuncionsPorCineTest" EntityType="Self.FuncionsPorCineTest" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -20,12 +41,33 @@
       <Schema Namespace="CineEvoTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CineEvoTestEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="AsientoNullTest" EntityType="CineEvoTestModel.AsientoNullTest" />
+          <EntitySet Name="AsientosPorSalaTest" EntityType="CineEvoTestModel.AsientosPorSalaTest" />
+          <EntitySet Name="FuncionsPorCineTest" EntityType="CineEvoTestModel.FuncionsPorCineTest" />
+          <EntitySet Name="FuncionNullTest" EntityType="CineEvoTestModel.FuncionNullTest" />
         </EntityContainer>
         <EntityType Name="AsientoNullTest">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AsientosPorSalaTest">
+          <Key>
+            <PropertyRef Name="idSala" />
+          </Key>
+          <Property Name="idSala" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuncionsPorCineTest">
+          <Key>
+            <PropertyRef Name="idCine" />
+          </Key>
+          <Property Name="idCine" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuncionNullTest">
+          <Key>
+            <PropertyRef Name="idFuncion" />
+          </Key>
+          <Property Name="idFuncion" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -37,6 +79,27 @@
             <EntityTypeMapping TypeName="CineEvoTestModel.AsientoNullTest">
               <MappingFragment StoreEntitySet="AsientoNullTest">
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsientosPorSalaTest">
+            <EntityTypeMapping TypeName="CineEvoTestModel.AsientosPorSalaTest">
+              <MappingFragment StoreEntitySet="AsientosPorSalaTest">
+                <ScalarProperty Name="idSala" ColumnName="idSala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuncionsPorCineTest">
+            <EntityTypeMapping TypeName="CineEvoTestModel.FuncionsPorCineTest">
+              <MappingFragment StoreEntitySet="FuncionsPorCineTest">
+                <ScalarProperty Name="idCine" ColumnName="idCine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuncionNullTest">
+            <EntityTypeMapping TypeName="CineEvoTestModel.FuncionNullTest">
+              <MappingFragment StoreEntitySet="FuncionNullTest">
+                <ScalarProperty Name="idFuncion" ColumnName="idFuncion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -9,5 +9,6 @@ namespace CineEvo.DataModel.Util
     public class ConstantesModel
     {
         public static readonly string ESTADO_ACTIVO = "ACT";
+        public static readonly string ESTADO_INACTIVO = "INA";
     }
 }

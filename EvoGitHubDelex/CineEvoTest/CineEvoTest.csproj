@@ -70,7 +70,17 @@
   <ItemGroup>
     <Compile Include="AsientoTest.cs" />
     <Compile Include="BaseTest.cs" />
+    <Compile Include="FuncionTest.cs" />
     <Compile Include="InputModel\AsientoNullTest.cs">
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InputModel\AsientosPorSalaTest.cs">
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InputModel\FuncionNullTest.cs">
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InputModel\FuncionsPorCineTest.cs">
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
     <Compile Include="InputModel\TestModel.Context.cs">

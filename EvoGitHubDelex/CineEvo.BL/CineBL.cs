@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using CineEvo.DataModel;
 using  CineEvo.BL.Base;
+using CineEvo.BE;
 
 namespace CineEvo.BL
 {
@@ -64,6 +65,19 @@ namespace CineEvo.BL
             {
                 throw new Exception("CineBL - listar : " + e.Message, e);
             }
+        }
+
+        public static CCine FromEntity(Cine f)
+        {
+            return new CCine
+                    {
+                        email = f.direccion,
+                        direccion = f.direccion,
+                        estado = f.estado,
+                        idCine = f.idCine,
+                        nombre = f.nombre,
+                        telefono = f.telefono
+                    };
         }
     }
 }
