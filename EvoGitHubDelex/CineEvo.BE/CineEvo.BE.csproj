@@ -43,12 +43,6 @@
     <Compile Include="CCine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CineEvo.DataModel\CineEvo.DataModel.csproj">
-      <Project>{7e96b91a-2267-43f1-8447-28685b100c72}</Project>
-      <Name>CineEvo.DataModel</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
     using System.Data.Entity;
     using CineEvo.BE;
     using CineEvo.BL.Base;
+using CineEvo.DataModel.Util;
 
     namespace CineEvo.BL
     {
@@ -81,10 +82,16 @@ using System.Threading.Tasks;
         {
             //FALTA PONER EL DateTime.Compare(now,pf.fechaFuncion)<0 , LO OBVIE PARA VENTAJAS DE TESTING
             DateTime now = new DateTime();
-            return (from f in DataContext.Funcion
-                    where f.estado == "ACT" && f.Sala.idCine == idCine
-                    //Z&& DateTime.Compare(now, f.fechaFuncion) < 0 
-                    select FromEntity(f)).ToList();
+            List<Funcion> funciones = new List<Funcion>();
+            try{
+                funciones = (from f in DataContext.Funcion
+                                        where f.Sala.idCine == idCine && f.estado.Equals(ConstantesModel.ESTADO_ACTIVO)
+                                        //Z&& DateTime.Compare(now, f.fechaFuncion) < 0 
+                                        select f).ToList();
+            }catch(Exception e){
+                throw new Exception("FuncionBL - listar from cine: " + e.Message, e);
+            }
+            return (from f in funciones select FromEntity(f)).ToList();
         }
 
         private CFuncion FromEntity(Funcion f)

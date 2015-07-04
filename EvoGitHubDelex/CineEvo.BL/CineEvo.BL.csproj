@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsientoBl.cs" />
     <Compile Include="Base\BaseBL.cs" />
+    <Compile Include="Base\BaseUtils.cs" />
     <Compile Include="CineBL.cs" />
     <Compile Include="FuncionBL.cs" />
     <Compile Include="PeliculaBL.cs" />

@@ -61,7 +61,6 @@ namespace CineEvo.UI
             int numFilas = 10, numCol = 20,contNumeros=1;
             int primerColBlanca = 4, segundaColBlanca = 15;
             char letra = 'A';
-            
 
             for (int i = 0; i < numFilas; i++)
             {
@@ -97,53 +96,6 @@ namespace CineEvo.UI
             xses.Add(x);
             yses.Add(y);
             ids.Add(id);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Dejen sus messagesboxes confirmando que lo probaron en su casa :D
-            MessageBox.Show("MUCHACHOS YA LO PROBÉ EN MI CASA - ALEX MATIAS DEL PIRÚ", "DELEX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            MessageBox.Show("PROBADO - VICTOR CHUQUIHUACCHA", "TIME IS SO UNKIND", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            MessageBox.Show("POR FIN ME INSTALÉ VISUAL U_U", "BRUNO AYBAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //--
-            
-            //ESTO DE ABAJO UTILICE PARA LLENAR LOS ASIENTOS EN LA BASE DE DATOS :D
-            /*
-            try
-            {
-                //Permite conectarme a una BD
-                SqlConnection sqlCon = new SqlConnection();
-                //A qué BD voy a conectar
-                sqlCon.ConnectionString = "Data Source=.;Initial Catalog=CineEvo;Integrated Security=True"; ;
-                //Abrir la conexion para ejecutar comandos SQL
-                sqlCon.Open();
-                //Console.WriteLine("Se conectó a la BD " + sqlCon.ConnectionString);
-
-                for (int sala = 10; sala <= 18; sala++)
-                {
-                    for (int i = 0; i < ids.Count; i++)
-                    {
-                        SqlCommand command = new SqlCommand();
-                        command.Connection = sqlCon;
-                        command.CommandText = "INSERT INTO Asiento(codigo,idSala,estado) VALUES ('" + ids[i] + "',"+sala+",'ACT')";
-                        command.CommandType = CommandType.Text;
-                        command.ExecuteNonQuery();
-
-                    }
-                }
-                //Cerrar la conexion
-                sqlCon.Close();
-
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }*/
-            
-            
-            
-            Close();
-            
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
