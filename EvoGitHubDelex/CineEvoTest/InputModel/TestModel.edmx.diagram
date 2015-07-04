@@ -4,7 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a301700f5117439287ea39a77d22e19a" Name="Diagram1" />
+      <Diagram DiagramId="2e9c3e8870994263929b7d9d658074d2" Name="Diagram1" >
+        <EntityTypeShape EntityType="CineEvoTestModel.AsientoNullTest" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

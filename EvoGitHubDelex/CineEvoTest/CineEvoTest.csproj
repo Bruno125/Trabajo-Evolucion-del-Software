@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D8CD5022-8486-47B5-AE77-3FC719BA97BC}</ProjectGuid>
+    <ProjectGuid>{566A90BC-2998-4AB0-8E26-376BFCF38A88}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CineEvoTest</RootNamespace>
@@ -68,18 +68,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsientosTest.cs" />
-    <Compile Include="InputsModel\TestModel.Context.cs">
+    <Compile Include="AsientoTest.cs" />
+    <Compile Include="BaseTest.cs" />
+    <Compile Include="InputModel\AsientoNullTest.cs">
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InputModel\TestModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="InputsModel\TestModel.cs">
+    <Compile Include="InputModel\TestModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="InputsModel\TestModel.Designer.cs">
+    <Compile Include="InputModel\TestModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestModel.edmx</DependentUpon>
@@ -87,20 +91,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <EntityDeploy Include="InputsModel\TestModel.edmx">
+    <EntityDeploy Include="InputModel\TestModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TestModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="InputsModel\TestModel.Context.tt">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="InputModel\TestModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TestModel.edmx</DependentUpon>
       <LastGenOutput>TestModel.Context.cs</LastGenOutput>
     </None>
-    <None Include="InputsModel\TestModel.edmx.diagram">
+    <None Include="InputModel\TestModel.edmx.diagram">
       <DependentUpon>TestModel.edmx</DependentUpon>
     </None>
-    <None Include="InputsModel\TestModel.tt">
+    <None Include="InputModel\TestModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TestModel.edmx</DependentUpon>
       <LastGenOutput>TestModel.cs</LastGenOutput>
@@ -109,6 +115,21 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CineEvo.BE\CineEvo.BE.csproj">
+      <Project>{7c27ae77-8934-4a91-9826-61b0aa0a30ee}</Project>
+      <Name>CineEvo.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CineEvo.BL\CineEvo.BL.csproj">
+      <Project>{2032081d-9783-46d0-bc4e-f6740b14eb9a}</Project>
+      <Name>CineEvo.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CineEvo.DataModel\CineEvo.DataModel.csproj">
+      <Project>{7e96b91a-2267-43f1-8447-28685b100c72}</Project>
+      <Name>CineEvo.DataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

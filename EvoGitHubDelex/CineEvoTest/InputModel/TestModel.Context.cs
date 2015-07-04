@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CineEvoTest.InputsModel
+namespace CineEvoTest.InputModel
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TestEntities : DbContext
+    public partial class CineEvoTestEntities : DbContext
     {
-        public TestEntities()
-            : base("name=TestEntities")
+        public CineEvoTestEntities()
+            : base("name=CineEvoTestEntities")
         {
         }
     
@@ -25,5 +25,6 @@ namespace CineEvoTest.InputsModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AsientoNullTest> AsientoNullTest { get; set; }
     }
 }

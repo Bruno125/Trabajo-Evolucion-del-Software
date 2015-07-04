@@ -4,24 +4,43 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CineEvoTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'CineEvoTest.dbo.AsientoNullTest' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+    <Schema Namespace="CineEvoTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AsientoNullTest">
-          <Property Name="id" Type="int" />
-        </EntityType>-->
-        <EntityContainer Name="CineEvoTestModelStoreContainer" />
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CineEvoTestModelStoreContainer">
+          <EntitySet Name="AsientoNullTest" EntityType="Self.AsientoNullTest" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CineEvoTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="TestEntities" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="CineEvoTestEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="AsientoNullTest" EntityType="CineEvoTestModel.AsientoNullTest" />
+        </EntityContainer>
+        <EntityType Name="AsientoNullTest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CineEvoTestModelStoreContainer" CdmEntityContainer="TestEntities" />
+        <EntityContainerMapping StorageEntityContainer="CineEvoTestModelStoreContainer" CdmEntityContainer="CineEvoTestEntities" >
+          <EntitySetMapping Name="AsientoNullTest">
+            <EntityTypeMapping TypeName="CineEvoTestModel.AsientoNullTest">
+              <MappingFragment StoreEntitySet="AsientoNullTest">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

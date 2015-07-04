@@ -46,7 +46,11 @@ namespace CineEvo.BL
             {
                 asiento =  DataContext.Asiento.Where(x => x.idAsiento == Id).Single();
             }
-            catch (Exception e)
+            catch (InvalidOperationException e)
+            {
+                asiento = null;
+            }
+            catch(Exception e)
             {
                 throw new Exception("CineBl - obtener : " + e.Message, e);
             }

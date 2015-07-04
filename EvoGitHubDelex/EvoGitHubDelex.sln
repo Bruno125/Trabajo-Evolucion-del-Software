@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.BE", "CineEvo.BE\Ci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvo.DataModel", "CineEvo.DataModel\CineEvo.DataModel.csproj", "{7E96B91A-2267-43F1-8447-28685B100C72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CineEvoTest", "CineEvoTest\CineEvoTest.csproj", "{566A90BC-2998-4AB0-8E26-376BFCF38A88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7E96B91A-2267-43F1-8447-28685B100C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E96B91A-2267-43F1-8447-28685B100C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E96B91A-2267-43F1-8447-28685B100C72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566A90BC-2998-4AB0-8E26-376BFCF38A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566A90BC-2998-4AB0-8E26-376BFCF38A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566A90BC-2998-4AB0-8E26-376BFCF38A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566A90BC-2998-4AB0-8E26-376BFCF38A88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
