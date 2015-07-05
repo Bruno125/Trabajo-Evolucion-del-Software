@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CineEvo.BL;
-using CineEvo.DataModel;
+using CineEvo.BE;
 
 namespace CineEvo.UI.Controls
 {
     public partial class VistaPrecios : CineEvo.UI.Controls.BaseControl
     {
         TipoEntradaBL objTipoEntradaBL = TipoEntradaBL.ObtenerInstancia();
-        Cine cine;
+        CCine cine;
 
         /*
         Llenar con data temporal
@@ -32,7 +32,7 @@ namespace CineEvo.UI.Controls
         public String tipo_funcion;
 
 
-        public VistaPrecios(Cine cine, ControlListener ControlListener)
+        public VistaPrecios(CCine cine, ControlListener ControlListener)
             : base(ControlListener)
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace CineEvo.UI.Controls
             List<FuncionGridWrapperEntrada> GridData = new List<FuncionGridWrapperEntrada>();
             try
             {
-                IList<TipoEntrada> entradas = objTipoEntradaBL.ObtenerTiposEntrada();
+                IList<CTipoEntrada> entradas = objTipoEntradaBL.Listar();
                 var data =
                     from e in entradas
                     select new FuncionGridWrapperEntrada()

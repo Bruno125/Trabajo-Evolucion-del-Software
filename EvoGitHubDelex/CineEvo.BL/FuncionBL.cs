@@ -7,6 +7,7 @@ using System.Threading.Tasks;
     using System.Data.Entity;
     using CineEvo.BE;
     using CineEvo.BL.Base;
+
 using CineEvo.DataModel.Util;
 
     namespace CineEvo.BL
@@ -56,9 +57,10 @@ using CineEvo.DataModel.Util;
 
         public CFuncion Obtener(int Id)
         {
+            CFuncion funcion;
             try
             {
-                return FromEntity(DataContext.Funcion.Where(x => x.idFuncion == Id).Single());
+                return FromEntity(DataContext.Funcion.FirstOrDefault(x => x.idFuncion == Id));
             }
             catch (Exception e)
             {
@@ -96,18 +98,22 @@ using CineEvo.DataModel.Util;
 
         private CFuncion FromEntity(Funcion f)
         {
-            return new CFuncion
-                    {
-                        NombrePelicula = f.Pelicula.titulo,
-                        id_funcion = f.idFuncion,
-                        horario = f.fechaFuncion,
-                        tipo_funcion = f.TipoFuncion.nombre,
-                        id_tipo_funcion = f.TipoFuncion.idTipoFuncion,
-                        sala = f.Sala.nombre,
-                        id_sala = f.Sala.idSala,
-                        precio = f.TipoFuncion.precio,
-
-                    };
+            CFuncion funcion=null;
+            if(f!=null){
+                funcion = new CFuncion()
+                        {
+                            NombrePelicula = f.Pelicula.titulo,
+                            id_funcion = f.idFuncion,
+                            horario = f.fechaFuncion,
+                            tipo_funcion = f.TipoFuncion.nombre,
+                            id_tipo_funcion = f.TipoFuncion.idTipoFuncion,
+                            sala = f.Sala.nombre,
+                            id_sala = f.Sala.idSala,
+                            precio = f.TipoFuncion.precio,
+                            Sala = SalaBL.FromEntity(f.Sala)
+                        };
+            }
+            return funcion;
         }
 
     }

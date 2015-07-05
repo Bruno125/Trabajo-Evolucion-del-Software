@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-using CineEvo.DataModel;
 using CineEvo.BL;
 using CineEvo.UI.Controls;
+using CineEvo.BE;
 
 
 namespace CineEvo.UI
@@ -345,7 +345,7 @@ namespace CineEvo.UI
             //DESAPARECE LOS COMPONENTES DE LA PAGINA 1
             
             idCineSeleccionado = Convert.ToInt32(cbCines.SelectedValue.ToString());
-            lbNombreCine.Text = ((Cine)cbCines.SelectedItem).nombre;
+            lbNombreCine.Text = ((CCine)cbCines.SelectedItem).nombre;
 
             FuncionBL objFuncionBL = FuncionBL.ObtenerInstancia();
             dgvFunciones.DataSource = objFuncionBL.ListarFromCine(idCineSeleccionado);

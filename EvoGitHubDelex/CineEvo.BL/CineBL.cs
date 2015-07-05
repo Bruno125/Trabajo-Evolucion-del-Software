@@ -11,7 +11,7 @@ using CineEvo.BE;
 
 namespace CineEvo.BL
 {
-    public class CineBL : BaseBL<Cine,int>
+    public class CineBL : BaseBL<CCine,int>
     {
         
          #region Singleton declaration
@@ -25,13 +25,13 @@ namespace CineEvo.BL
         }
         #endregion
 
-        public void Insertar(Cine Entity)
+        public void Insertar(CCine Entity)
         {
             //No se realizaran operaciones de insercion para esta entidad
             throw new NotImplementedException();
         }
 
-        public void Actualizar(Cine Entity)
+        public void Actualizar(CCine Entity)
         {
             //No se realizaran operaciones de actualizacion para esta entidad
             throw new NotImplementedException();
@@ -43,11 +43,11 @@ namespace CineEvo.BL
             throw new NotImplementedException();
         }
 
-        public Cine Obtener(int Id)
+        public CCine Obtener(int Id)
         {
             try
             {
-                return DataContext.Cine.Where(x => x.idCine == Id).Single();
+                return  CineBL.FromEntity(DataContext.Cine.Where(x => x.idCine == Id).Single());
             }
             catch (Exception e)
             {
@@ -55,11 +55,11 @@ namespace CineEvo.BL
             }
         }
 
-        public List<Cine> Listar()
+        public List<CCine> Listar()
         {
             try
             {
-                return instance.DataContext.Cine.ToList();
+                return DataContext.Cine.ToList().Select(x=> FromEntity(x)).ToList();
             }
             catch (Exception e)
             {
@@ -67,17 +67,17 @@ namespace CineEvo.BL
             }
         }
 
-        public static CCine FromEntity(Cine f)
+        public static CCine FromEntity(Cine Entity)
         {
-            return new CCine
-                    {
-                        email = f.direccion,
-                        direccion = f.direccion,
-                        estado = f.estado,
-                        idCine = f.idCine,
-                        nombre = f.nombre,
-                        telefono = f.telefono
-                    };
-        }
+            return new CCine()
+            {
+                 direccion = Entity.direccion,
+                 email = Entity.email,
+                 estado = Entity.estado,
+                 idCine = Entity.idCine,
+                 nombre = Entity.nombre,
+                 telefono = Entity.telefono
+            };
+        } 
     }
 }
