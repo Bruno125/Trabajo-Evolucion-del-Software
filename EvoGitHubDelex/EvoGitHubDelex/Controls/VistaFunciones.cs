@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 
 using CineEvo.BL;
-using CineEvo.DataModel;
+using CineEvo.BE;
 
 namespace CineEvo.UI.Controls
 {
@@ -19,9 +19,9 @@ namespace CineEvo.UI.Controls
         PeliculaBL objPeliculaBL = PeliculaBL.ObtenerInstancia();
         TipoFuncionBL objTipoFuncionBL = TipoFuncionBL.ObtenerInstancia();
         SalaBL objSalaBL = SalaBL.ObtenerInstancia();
-        Cine cine;
+        CCine cine;
 
-        public VistaFunciones(Cine cine, ControlListener ControlListener)
+        public VistaFunciones(CCine cine, ControlListener ControlListener)
             : base(ControlListener)
         {
             InitializeComponent();
@@ -41,32 +41,15 @@ namespace CineEvo.UI.Controls
             List<FuncionGridWrapper> GridData = new List<FuncionGridWrapper>();
             try
             {
-                IList<Funcion> funciones = objFuncionBL.ObtenerFunciones();
-                IList<Pelicula> peliculas = objPeliculaBL.Listar();
-                IList<TipoFuncion> tipos_funcion = objTipoFuncionBL.ObtenerTiposFuncion();
-                IList<Sala> salas = objSalaBL.Listar();
-                DateTime now = DateTime.Now;
-                var data =
-                    from p in peliculas
-                    join f in funciones on p.idPelicula equals f.idPelicula
-                    into pelicula_funcion
-                    from pf in pelicula_funcion
-                    join t in tipos_funcion on pf.idTipoFuncion equals t.idTipoFuncion
-                    into pft
-                    join s in salas on pf.idSala equals s.idSala
-                    where (pf.fechaFuncion.Date.Date == now.Date
-                            && s.idCine == cine.idCine)
-                    //       && DateTime.Compare(pf.fechaFuncion.Date,now.Date)>0)
-                    select new FuncionGridWrapper()
-                    {
-                        id_funcion = pf.idFuncion,
-                        NombrePelicula = pf.Pelicula.titulo,
-                        horario = pf.fechaFuncion,
-                        tipo_funcion = pf.TipoFuncion.nombre,
-                        sala = s.nombre
-                    };
-
-                GridData = data.ToList();
+                GridData = (from f in FuncionBL.ObtenerInstancia().ListarFromCine(cine.idCine)
+                            select new FuncionGridWrapper()
+                            {
+                                horario = f.horario,
+                                id_funcion = f.id_funcion,
+                                NombrePelicula = f.NombrePelicula,
+                                sala = f.Sala.nombre,
+                                tipo_funcion = f.tipo_funcion
+                            }).ToList();
             }
             catch (Exception)
             {

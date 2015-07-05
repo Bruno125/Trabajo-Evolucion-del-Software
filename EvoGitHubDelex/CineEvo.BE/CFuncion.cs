@@ -16,5 +16,6 @@ namespace CineEvo.BE
         public string sala { get; set; }
         public double precio { get; set; }
         public int id_sala { get; set; }
+        public CSala Sala { get; set; }
     }
 }
