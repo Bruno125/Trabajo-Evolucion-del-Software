@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="AsientoTest.cs" />
     <Compile Include="BaseTest.cs" />
+    <Compile Include="CinesTest.cs" />
     <Compile Include="FuncionTest.cs" />
     <Compile Include="InputModel\AsientoNullTest.cs">
       <DependentUpon>TestModel.tt</DependentUpon>
@@ -98,7 +99,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TestModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PeliculasTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoEntradasTest.cs" />
+    <Compile Include="TipoFuncionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="InputModel\TestModel.edmx">

@@ -55,5 +55,16 @@ namespace CineEvoTest
             }
         }
 
+        /// <summary>
+        /// Es esta app no deben poder realizarse inserts ni deletes de la funciones
+        /// a la bd de dato, por lo cual estos metodos no deberían tener implementacion
+        /// </summary>
+        [Test]
+        public void AsientoCrudNotImplemented()
+        {
+            Assert.Throws<NotImplementedException>(() => AsientoBL.Insertar(new Asiento()));
+            Assert.Throws<NotImplementedException>(() => AsientoBL.Eliminar(1));
+        }
+
     }
 }
