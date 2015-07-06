@@ -44,6 +44,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.LblSala = new System.Windows.Forms.Label();
+            this.BtnReiniciar = new System.Windows.Forms.Button();
+            this.BtnPagar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +108,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel1.Controls.Add(this.LblSala);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.LblTipoPelicula);
@@ -182,9 +186,9 @@
             this.panel2.Controls.Add(this.LblTotalPago);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.LblDineroIngresado);
-            this.panel2.Location = new System.Drawing.Point(31, 12);
+            this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(298, 312);
+            this.panel2.Size = new System.Drawing.Size(318, 254);
             this.panel2.TabIndex = 7;
             // 
             // label3
@@ -199,17 +203,48 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(130, 262);
+            this.label4.Location = new System.Drawing.Point(148, 282);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "Total a Pagar: ";
+            // 
+            // LblSala
+            // 
+            this.LblSala.AutoSize = true;
+            this.LblSala.Location = new System.Drawing.Point(40, 228);
+            this.LblSala.Name = "LblSala";
+            this.LblSala.Size = new System.Drawing.Size(28, 13);
+            this.LblSala.TabIndex = 14;
+            this.LblSala.Text = "Sala";
+            // 
+            // BtnReiniciar
+            // 
+            this.BtnReiniciar.Location = new System.Drawing.Point(86, 284);
+            this.BtnReiniciar.Name = "BtnReiniciar";
+            this.BtnReiniciar.Size = new System.Drawing.Size(83, 40);
+            this.BtnReiniciar.TabIndex = 8;
+            this.BtnReiniciar.Text = "Empezar de nuevo";
+            this.BtnReiniciar.UseVisualStyleBackColor = true;
+            this.BtnReiniciar.Click += new System.EventHandler(this.BtnReiniciar_Click);
+            // 
+            // BtnPagar
+            // 
+            this.BtnPagar.Location = new System.Drawing.Point(202, 284);
+            this.BtnPagar.Name = "BtnPagar";
+            this.BtnPagar.Size = new System.Drawing.Size(83, 40);
+            this.BtnPagar.TabIndex = 9;
+            this.BtnPagar.Text = "Pagar";
+            this.BtnPagar.UseVisualStyleBackColor = true;
+            this.BtnPagar.Click += new System.EventHandler(this.BtnPagar_Click);
             // 
             // frmPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 336);
+            this.Controls.Add(this.BtnPagar);
+            this.Controls.Add(this.BtnReiniciar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmPago";
@@ -242,5 +277,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblSala;
+        private System.Windows.Forms.Button BtnReiniciar;
+        private System.Windows.Forms.Button BtnPagar;
     }
 }

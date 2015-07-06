@@ -73,6 +73,12 @@
     <Compile Include="Controls\VistaPrecios.Designer.cs">
       <DependentUpon>VistaPrecios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComprobante.Designer.cs">
+      <DependentUpon>frmComprobante.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFunciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\VistaPrecios.resx">
       <DependentUpon>VistaPrecios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComprobante.resx">
+      <DependentUpon>frmComprobante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFunciones.resx">
       <DependentUpon>frmFunciones.cs</DependentUpon>

@@ -572,6 +572,7 @@ namespace CineEvo.UI
                 frm.Pelicula = "Prueba Pelicula";
                 frm.FechaFuncion = DateTime.Now;
                 frm.TipoPelicula = "2D";
+                frm.Sala = "Sala CR7";
                 //Pasar datos reales obtenidos en la anterior ventana
                 //Datos referentes a las entradas y sala
 
