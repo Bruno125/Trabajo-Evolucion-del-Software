@@ -559,6 +559,31 @@ namespace CineEvo.UI
             }
             else if(nroHojaActual==3)//Hoja de precios
             {
+                //---
+                //-----                
+                //------                
+                //PRUEBA - VICTOR                
+
+                frmPago frm = new frmPago();
+
+                //Estos datos deben obtenerse de la pantalla previa
+                frm.TotalPago = 50;
+                frm.Cine = "Prueba Cine";
+                frm.Pelicula = "Prueba Pelicula";
+                frm.FechaFuncion = DateTime.Now;
+                frm.TipoPelicula = "2D";
+                //Pasar datos reales obtenidos en la anterior ventana
+                //Datos referentes a las entradas y sala
+
+                frm.Show();
+                //PRUEBA - VICTOR
+                //------
+                //-----
+                //---
+
+
+
+
                 return;
             }
 
