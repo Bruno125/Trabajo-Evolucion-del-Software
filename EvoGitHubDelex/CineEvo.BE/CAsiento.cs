@@ -17,26 +17,35 @@ namespace CineEvo.BE
         public int Ancho { get; set; }
         public int Largo { get; set; }              
         public bool comprado { get; set; }
+        public bool seleccionado { get; set; }
         public string ClienteComprador { get; set; }
 
         public int margenSup { get; set; }
         public int margenLeft { get; set; }
 
         public CAsiento()
-        {
-            margenSup = 35;
-            margenLeft = 30;
+        {            
+            margenSup = 15;
+            margenLeft = 15; 
         }
 
-        public void Dibujar(Graphics g)
+        public void Dibujar(Graphics g,Bitmap bmpUser)
         {
-            g.FillRectangle(new SolidBrush(Color.Red), X + margenLeft, Y + margenSup, Ancho, Largo);
-            g.DrawString(codigo, new Font("Arial", 6), new SolidBrush(Color.White), X + margenLeft, Y + Largo / 10 + margenSup);
+            if (seleccionado == false)
+            {
+                g.FillRectangle(new SolidBrush(Color.Brown), X + margenLeft, Y + margenSup, Ancho, Largo);
+                g.DrawString(codigo, new Font("Arial Black", 6), new SolidBrush(Color.White), X + 1 + margenLeft, Y + Largo / 10 + margenSup);
+            }
+            else
+            {
+                g.FillRectangle(new SolidBrush(Color.Gold), X + margenLeft, Y + margenSup, Ancho, Largo);
+                g.DrawImage(bmpUser, X + Largo / 10 + 1 + margenLeft, Y + 2 + margenSup, Ancho - 4, Largo - 4);
+            }
         }
 
         public void DibujarOcupados(Graphics g, Bitmap bmpUser)
         {
-            g.FillRectangle(new SolidBrush(Color.Red), X + margenLeft, Y + margenSup, Ancho, Largo);
+            g.FillRectangle(new SolidBrush(Color.Brown), X + margenLeft, Y + margenSup, Ancho, Largo);
             g.DrawImage(bmpUser, X + Largo / 10 + 1 + margenLeft, Y + 2 + margenSup, Ancho - 4, Largo - 4);
             //.DrawString(Nombre, new Font("Arial", 6), new SolidBrush(Color.White), X, Y + Largo / 10);
         }

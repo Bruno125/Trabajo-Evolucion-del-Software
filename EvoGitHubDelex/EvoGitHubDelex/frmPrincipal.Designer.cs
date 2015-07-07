@@ -36,18 +36,21 @@
             this.cbCines = new System.Windows.Forms.ComboBox();
             this.lbPreferencia = new System.Windows.Forms.Label();
             this.lbSeleccione = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelCeleste = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnConsultar = new System.Windows.Forms.PictureBox();
             this.lbCartelera = new System.Windows.Forms.Label();
             this.dgvPrecios = new System.Windows.Forms.DataGridView();
             this.dgvFunciones = new System.Windows.Forms.DataGridView();
             this.pBar = new System.Windows.Forms.ProgressBar();
+            this.totalPrecio = new System.Windows.Forms.Timer(this.components);
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.lbTotalNum = new System.Windows.Forms.Label();
+            this.pcUser = new System.Windows.Forms.PictureBox();
+            this.btnSiguiente = new System.Windows.Forms.Button();
             this.picBack = new System.Windows.Forms.PictureBox();
             this.picBotonComprar = new System.Windows.Forms.PictureBox();
             this.picBannerAbajo = new System.Windows.Forms.PictureBox();
@@ -55,16 +58,13 @@
             this.picComprar = new System.Windows.Forms.PictureBox();
             this.picCanchita = new System.Windows.Forms.PictureBox();
             this.picCinepolis = new System.Windows.Forms.PictureBox();
-            this.btnSiguiente = new System.Windows.Forms.Button();
-            this.totalPrecio = new System.Windows.Forms.Timer(this.components);
-            this.lbTotal = new System.Windows.Forms.Label();
-            this.lbTotalNum = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnConsultar = new System.Windows.Forms.PictureBox();
             this.Header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelCeleste.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnConsultar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrecios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBotonComprar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBannerAbajo)).BeginInit();
@@ -72,6 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picComprar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCanchita)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCinepolis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnConsultar)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -135,17 +137,6 @@
             this.lbSeleccione.Size = new System.Drawing.Size(137, 15);
             this.lbSeleccione.TabIndex = 1;
             this.lbSeleccione.Text = "Selecciona el cine de tu";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(210, 45);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // panelCeleste
             // 
@@ -217,17 +208,6 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Consulta aquí :";
             // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Image = global::CineEvo.UI.Properties.Resources._1430638298_clapstick;
-            this.btnConsultar.Location = new System.Drawing.Point(100, 100);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(59, 57);
-            this.btnConsultar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnConsultar.TabIndex = 0;
-            this.btnConsultar.TabStop = false;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
             // lbCartelera
             // 
             this.lbCartelera.AutoSize = true;
@@ -269,6 +249,59 @@
             this.pBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.pBar.TabIndex = 138;
             this.pBar.Visible = false;
+            // 
+            // totalPrecio
+            // 
+            this.totalPrecio.Enabled = true;
+            this.totalPrecio.Interval = 1;
+            this.totalPrecio.Tick += new System.EventHandler(this.totalPrecio_Tick);
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotal.Location = new System.Drawing.Point(20, 133);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(33, 14);
+            this.lbTotal.TabIndex = 9;
+            this.lbTotal.Text = "Total";
+            this.lbTotal.Visible = false;
+            // 
+            // lbTotalNum
+            // 
+            this.lbTotalNum.AutoSize = true;
+            this.lbTotalNum.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalNum.Location = new System.Drawing.Point(28, 163);
+            this.lbTotalNum.Name = "lbTotalNum";
+            this.lbTotalNum.Size = new System.Drawing.Size(33, 14);
+            this.lbTotalNum.TabIndex = 141;
+            this.lbTotalNum.Text = "Total";
+            this.lbTotalNum.Visible = false;
+            // 
+            // pcUser
+            // 
+            this.pcUser.Image = global::CineEvo.UI.Properties.Resources.user2;
+            this.pcUser.Location = new System.Drawing.Point(12, 211);
+            this.pcUser.Name = "pcUser";
+            this.pcUser.Size = new System.Drawing.Size(14, 14);
+            this.pcUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pcUser.TabIndex = 142;
+            this.pcUser.TabStop = false;
+            this.pcUser.Visible = false;
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSiguiente.BackColor = System.Drawing.Color.White;
+            this.btnSiguiente.BackgroundImage = global::CineEvo.UI.Properties.Resources.siguiente;
+            this.btnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSiguiente.Location = new System.Drawing.Point(99, 82);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(142, 50);
+            this.btnSiguiente.TabIndex = 140;
+            this.btnSiguiente.UseVisualStyleBackColor = false;
+            this.btnSiguiente.Visible = false;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // picBack
             // 
@@ -343,47 +376,27 @@
             this.picCinepolis.TabIndex = 6;
             this.picCinepolis.TabStop = false;
             // 
-            // btnSiguiente
+            // pictureBox2
             // 
-            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSiguiente.BackColor = System.Drawing.Color.White;
-            this.btnSiguiente.BackgroundImage = global::CineEvo.UI.Properties.Resources.siguiente;
-            this.btnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSiguiente.Location = new System.Drawing.Point(99, 82);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(142, 50);
-            this.btnSiguiente.TabIndex = 140;
-            this.btnSiguiente.UseVisualStyleBackColor = false;
-            this.btnSiguiente.Visible = false;
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(210, 45);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
-            // totalPrecio
+            // btnConsultar
             // 
-            this.totalPrecio.Enabled = true;
-            this.totalPrecio.Interval = 1;
-            this.totalPrecio.Tick += new System.EventHandler(this.totalPrecio_Tick);
-            // 
-            // lbTotal
-            // 
-            this.lbTotal.AutoSize = true;
-            this.lbTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotal.Location = new System.Drawing.Point(20, 133);
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(33, 14);
-            this.lbTotal.TabIndex = 9;
-            this.lbTotal.Text = "Total";
-            this.lbTotal.Visible = false;
-            // 
-            // lbTotalNum
-            // 
-            this.lbTotalNum.AutoSize = true;
-            this.lbTotalNum.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalNum.Location = new System.Drawing.Point(28, 163);
-            this.lbTotalNum.Name = "lbTotalNum";
-            this.lbTotalNum.Size = new System.Drawing.Size(33, 14);
-            this.lbTotalNum.TabIndex = 141;
-            this.lbTotalNum.Text = "Total";
-            this.lbTotalNum.Visible = false;
+            this.btnConsultar.Image = global::CineEvo.UI.Properties.Resources._1430638298_clapstick;
+            this.btnConsultar.Location = new System.Drawing.Point(100, 100);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(59, 57);
+            this.btnConsultar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnConsultar.TabIndex = 0;
+            this.btnConsultar.TabStop = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // frmPrincipal
             // 
@@ -393,6 +406,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(751, 488);
+            this.Controls.Add(this.pcUser);
             this.Controls.Add(this.lbTotalNum);
             this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.btnSiguiente);
@@ -417,14 +431,15 @@
             this.Text = "CINEPOLIS - ¡ Disfruta tu Película !";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseClick);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             this.Header.ResumeLayout(false);
             this.Header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelCeleste.ResumeLayout(false);
             this.panelCeleste.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnConsultar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrecios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBotonComprar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBannerAbajo)).EndInit();
@@ -432,6 +447,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picComprar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCanchita)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCinepolis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnConsultar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,6 +485,7 @@
         private System.Windows.Forms.Timer totalPrecio;
         private System.Windows.Forms.Label lbTotal;
         private System.Windows.Forms.Label lbTotalNum;
+        private System.Windows.Forms.PictureBox pcUser;
     }
 }
 

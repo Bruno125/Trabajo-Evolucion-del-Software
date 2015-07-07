@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using CineEvo.BE;
+//using CineEvo.BE;
 
 namespace CineEvo.BL
 {

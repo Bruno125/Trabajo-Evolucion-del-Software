@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using CineEvo.DataModel;
 using CineEvo.BL;
 using CineEvo.UI.Controls;
+using CineEvo.BE;
 
 
 namespace CineEvo.UI
@@ -20,12 +21,13 @@ namespace CineEvo.UI
 
     public partial class frmPrincipal : Form, ControlListener
     {
-
+        Bitmap bmpUser;
         List<int> xses;
         List<int> yses;
         List<string> ids;
         int w;
         int defineSeparador;
+        CCine controlador;
         
         //atributos necesarios principales
         CineBL objCineBL = new CineBL();
@@ -35,13 +37,16 @@ namespace CineEvo.UI
         int columnaSeleccionada;
         int filaSeleccionada;
         bool cambioValor;
-        int idSala;
+        int idSala,cantEntradasEscogidas;
+        bool mostrarMapa;
 
         public frmPrincipal()
         {
             InitializeComponent();
 
             nroHojaActual = 1;
+            cantEntradasEscogidas = -1;
+            mostrarMapa = false;
             //cambioValor = false;
             xses = new List<int>();
             yses = new List<int>();
@@ -50,7 +55,7 @@ namespace CineEvo.UI
             defineSeparador = 7;
             filaSeleccionada = -1;
             idSala = -1;
-
+            bmpUser = new Bitmap(this.pcUser.Image);
             generarCoordenadas();
 
         }
@@ -157,6 +162,15 @@ namespace CineEvo.UI
             BufferedGraphics buffer = espaciobuffer.Allocate(gr, new Rectangle(0, 0, Wreal, Hreal));
             buffer.Graphics.Clear(this.BackColor);
             //AQUI VA LOS DIBUJOS
+
+            if(mostrarMapa)
+            {
+                controlador.DibujarAsientos(buffer.Graphics,bmpUser);
+                controlador.DibujarAsientosOcupados(buffer.Graphics, bmpUser);
+               
+            }
+
+            
 
            // buffer.Graphics.FillEllipse(new SolidBrush(Color.Blue),30,30,30,30);
             /*
@@ -531,6 +545,9 @@ namespace CineEvo.UI
                  lbTotalNum.Visible = true;
                  lbTotalNum.Parent = dgvPrecios;
              }
+
+             mostrarMapa = !mostrarMapa;
+
              // lbTotal.Parent = dgvPrecios;
              lbTotal.Left = 420;
              lbTotal.Top = 70;
@@ -647,17 +664,27 @@ namespace CineEvo.UI
                 SalaBL objSalaBL = SalaBL.ObtenerInstancia();
                 Sala consultar=objSalaBL.ObtenerSala(idSala);
 
-                if(consultar.asientosLibres<(cantGeneral+cantNiniosViejos))
+                if(consultar.asientosLibres<(cantGeneral+cantNiniosViejos)) //si la cant que escogio es mayor que la cantidad de asientos libres
                 {
                     MessageBox.Show("No existen asientos libres disponibles para la cantidad solicitada - Existen "+consultar.asientosLibres+" asientos libres", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 //AQUI SI ENTRARIA A LA OTRA PANTALLA DE MAPA
-                DesaparecerAparecerPagina3();
-                //return;
-                //
+                controlador = new CCine(idSala);
+                cantEntradasEscogidas = cantGeneral + cantNiniosViejos;
+                DesaparecerAparecerPagina3();                               
 
+            }
+            else if(nroHojaActual==4)
+            {
+                if(cantEntradasEscogidas>controlador.cantAsientosSeleccionados())
+                {
+                    MessageBox.Show("Aún no a seleccionado la cantidad final de entradas a comprar, seleccione", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                return;
             }
 
 
@@ -740,6 +767,28 @@ namespace CineEvo.UI
                 }
             }*/
         
+        }
+
+        private void frmPrincipal_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(mostrarMapa)
+            {
+                if (controlador.manitoEnCasilla(e.X, e.Y,cantEntradasEscogidas))
+                    this.Cursor = Cursors.Hand;
+                else
+                    this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void frmPrincipal_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(mostrarMapa)
+            {
+                CAsiento seleccionar = controlador.traerAsientoClickeado(e.X, e.Y,cantEntradasEscogidas);
+                if (seleccionar != null)
+                    seleccionar.seleccionado = !seleccionar.seleccionado;
+            }
+
         }
     
     

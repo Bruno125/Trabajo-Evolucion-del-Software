@@ -145,10 +145,13 @@
   <data name="1430638298_clapstick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1430638298_clapstick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="backPro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backPro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="201542992421544-prin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\201542992421544-prin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backPro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\backPro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="user2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

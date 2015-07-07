@@ -14,8 +14,8 @@ namespace CineEvo.DataModel
     
     public partial class AsientoPintar
     {
-        public Nullable<int> X { get; set; }
-        public Nullable<int> Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public string codigo { get; set; }
     }
 }

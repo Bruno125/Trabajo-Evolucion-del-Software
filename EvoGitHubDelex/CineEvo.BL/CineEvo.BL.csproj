@@ -67,6 +67,10 @@
       <Project>{7e96b91a-2267-43f1-8447-28685b100c72}</Project>
       <Name>CineEvo.DataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CineEvo.Util\CineEvo.Util.csproj">
+      <Project>{e4e278e0-32a9-4e7f-ab93-7443974fe85a}</Project>
+      <Name>CineEvo.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

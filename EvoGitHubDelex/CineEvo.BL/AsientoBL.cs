@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using CineEvo.DataModel;
+using CineEvo.Util;
 
 namespace CineEvo.BL
 {
@@ -21,13 +22,13 @@ namespace CineEvo.BL
             return datacontext.AsientoPintar.ToList();
         }
 
-        public IEnumerable<Object> ObtenerAsientosComprados(int idSala)
+        public List<AsientosComprados> ObtenerAsientosComprados(int idSala)
         {
             return (from ap in datacontext.AsientoPintar
                     join a in datacontext.Asiento
                         on ap.codigo equals a.codigo
                        where (a.idSala==idSala && a.estado=="VEN")
-                    select new
+                    select new AsientosComprados
                     {
                         AsientoId = a.idAsiento,
                         codigo = a.codigo,
