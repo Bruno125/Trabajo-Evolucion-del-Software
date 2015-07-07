@@ -67,12 +67,17 @@ using CineEvo.DataModel.Util;
 
         public List<CFuncion> ListarFromCine(int idCine)
         {
-            //FALTA PONER EL DateTime.Compare(now,pf.fechaFuncion)<0 , LO OBVIE PARA VENTAJAS DE TESTING
             List<Funcion> funciones = new List<Funcion>();
             try{
                 funciones = (from f in DataContext.Funcion
                                         where f.Sala.idCine == idCine && f.estado.Equals(ConstantesModel.ESTADO_ACTIVO)
                              select f).ToList();
+                /*Nota:
+                 * Las siguientes lineas sirven para validar correctamente las funciones del dia.
+                 * Se puede comentar para simplificar el testeo de la aplicacion. Sin embargo, deben descomentarse
+                 * para poder pasar las pruebas unitarias satisfactoriamente.
+                */
+
                 //if(funciones!=null)
                 //    funciones = funciones.Where(f => (f.fechaFuncion.Date == DateTime.Now &&
                 //                              f.fechaFuncion.TimeOfDay < DateTime.Now.TimeOfDay)).ToList();
