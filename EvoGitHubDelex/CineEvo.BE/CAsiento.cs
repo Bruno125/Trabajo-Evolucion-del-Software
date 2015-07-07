@@ -8,6 +8,8 @@ namespace CineEvo.BE
 {
     public class CAsiento
     {
+        public static readonly string ESTADO_ACTIVO = "ACT";
+        public static readonly string ESTADO_INACTIVO = "VEN";
 
         public int idAsiento { get; set; }
         public string codigo { get; set; }

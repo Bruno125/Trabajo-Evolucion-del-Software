@@ -23,21 +23,6 @@ using CineEvo.DataModel.Util;
                 return instance;
             }
             #endregion
-            public IList<Funcion> ObtenerFunciones()
-        {
-            try
-            {
-                return DataContext.Funcion.ToList();
-            }
-            catch (Exception e)
-            {
-                throw new Exception("BL obtener funciones : " + e.Message,e);
-            }
-        }
-        public CFuncion ObtenerFuncion(int id)
-        {
-            return FromEntity(DataContext.Funcion.Single(x => x.idFuncion == id));
-        }
 
         public void Insertar(CFuncion Entity)
         {
@@ -81,14 +66,20 @@ using CineEvo.DataModel.Util;
 
         public List<CFuncion> ListarFromCine(int idCine)
         {
-            //FALTA PONER EL DateTime.Compare(now,pf.fechaFuncion)<0 , LO OBVIE PARA VENTAJAS DE TESTING
-            DateTime now = new DateTime();
             List<Funcion> funciones = new List<Funcion>();
             try{
                 funciones = (from f in DataContext.Funcion
                                         where f.Sala.idCine == idCine && f.estado.Equals(ConstantesModel.ESTADO_ACTIVO)
-                                        //Z&& DateTime.Compare(now, f.fechaFuncion) < 0 
-                                        select f).ToList();
+                             select f).ToList();
+                /*Nota:
+                 * Las siguientes lineas sirven para validar correctamente las funciones del dia.
+                 * Se puede comentar para simplificar el testeo de la aplicacion. Sin embargo, deben descomentarse
+                 * para poder pasar las pruebas unitarias satisfactoriamente.
+                */
+
+                //if(funciones!=null)
+                //    funciones = funciones.Where(f => (f.fechaFuncion.Date == DateTime.Now &&
+                //                              f.fechaFuncion.TimeOfDay < DateTime.Now.TimeOfDay)).ToList();
             }catch(Exception e){
                 throw new Exception("FuncionBL - listar from cine: " + e.Message, e);
             }

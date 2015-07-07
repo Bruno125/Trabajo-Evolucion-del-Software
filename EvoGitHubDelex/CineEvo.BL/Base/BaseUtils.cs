@@ -10,7 +10,7 @@ namespace CineEvo.BL.Base
 {
     public class BaseUtils
     {
-        DbConnection GetConnection()
+        public DbConnection GetConnection()
         {
             using (var db = new CineEvoEntities())
             {

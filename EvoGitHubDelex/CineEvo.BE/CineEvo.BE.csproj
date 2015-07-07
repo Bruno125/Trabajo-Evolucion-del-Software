@@ -48,6 +48,7 @@
     <Compile Include="CPelicula.cs" />
     <Compile Include="CSala.cs" />
     <Compile Include="CTipoEntrada.cs" />
+    <Compile Include="CTipoFuncion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

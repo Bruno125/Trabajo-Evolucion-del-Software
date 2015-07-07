@@ -45,14 +45,16 @@ namespace CineEvo.BL
 
         public CCine Obtener(int Id)
         {
+            CCine cine = null;
             try
             {
-                return  CineBL.FromEntity(DataContext.Cine.Where(x => x.idCine == Id).Single());
+                cine = CineBL.FromEntity(DataContext.Cine.FirstOrDefault(x => x.idCine == Id));
             }
             catch (Exception e)
             {
-                throw new Exception("CineBl - obtener : " + e.Message, e);
+                throw new Exception("CineBL - obtener : " + e.Message, e);
             }
+            return cine;
         }
 
         public List<CCine> Listar()
@@ -69,16 +71,18 @@ namespace CineEvo.BL
 
         public static CCine FromEntity(Cine Entity)
         {
-            return new CCine()
-            {
-                 direccion = Entity.direccion,
-                 email = Entity.email,
-                 estado = Entity.estado,
-                 idCine = Entity.idCine,
-                 nombre = Entity.nombre,
-                 telefono = Entity.telefono
-            };
+            if (Entity != null)
+                return new CCine()
+                {
+                    direccion = Entity.direccion,
+                    email = Entity.email,
+                    estado = Entity.estado,
+                    idCine = Entity.idCine,
+                    nombre = Entity.nombre,
+                    telefono = Entity.telefono
+                };
+            else
+                return null;
         } 
-
     }
 }
