@@ -683,6 +683,28 @@ namespace CineEvo.UI
                     MessageBox.Show("Aún no a seleccionado la cantidad final de entradas a comprar, seleccione", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+                //TODO: integra cabio de victor
+                //-----                
+                //------                
+                //PRUEBA - VICTOR                
+
+                frmPago frm = new frmPago();
+
+                //Estos datos deben obtenerse de la pantalla previa
+                frm.TotalPago = 50;
+                frm.Cine = "Prueba Cine";
+                frm.Pelicula = "Prueba Pelicula";
+                frm.FechaFuncion = DateTime.Now;
+                frm.TipoPelicula = "2D";
+                frm.Sala = "Sala CR7";
+                //Pasar datos reales obtenidos en la anterior ventana
+                //Datos referentes a las entradas y sala
+
+                frm.Show();
+                //PRUEBA - VICTOR
+                //------
+                //-----
+                //---
 
                 return;
             }

@@ -215,7 +215,7 @@
             this.lbCartelera.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(91)))), ((int)(((byte)(161)))));
             this.lbCartelera.Location = new System.Drawing.Point(554, 89);
             this.lbCartelera.Name = "lbCartelera";
-            this.lbCartelera.Size = new System.Drawing.Size(100, 30);
+            this.lbCartelera.Size = new System.Drawing.Size(99, 30);
             this.lbCartelera.TabIndex = 11;
             this.lbCartelera.Text = "Cartelera";
             // 
