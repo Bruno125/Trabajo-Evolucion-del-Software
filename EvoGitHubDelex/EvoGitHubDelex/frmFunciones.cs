@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CineEvo.BL;
-using CineEvo.DataModel;
+using CineEvo.BE;
 
 namespace CineEvo.UI
 {
@@ -22,7 +22,7 @@ namespace CineEvo.UI
         SalaBL objSalaBL = SalaBL.ObtenerInstancia();        
 
         //Atributos
-        public Cine cine;
+        public CCine cine;
 
         /*
          * Actualizar fechas
@@ -38,43 +38,7 @@ namespace CineEvo.UI
         public void CargarData()
         {
             
-            IList<Funcion> funciones = objFuncionBL.ObtenerFunciones();
-            IList<Pelicula> peliculas = objPeliculaBL.ObtenerPeliculas();
-            IList<TipoFuncion> tipos_funcion = objTipoFuncionBL.ObtenerTiposFuncion();
-            IList<Sala> salas = objSalaBL.ObtenerSalas();
-            DateTime now = DateTime.Now;
-            var data =
-                from p in peliculas
-                join f in funciones on p.idPelicula equals f.idPelicula
-                into pelicula_funcion
-                from pf in pelicula_funcion
-                join t in tipos_funcion on pf.idTipoFuncion equals t.idTipoFuncion
-                into pft
-                join s in salas on pf.idSala equals s.idSala
-                where (pf.fechaFuncion.Date == now.Date
-                        && DateTime.Compare(now,pf.fechaFuncion)<0
-                        && s.idCine == cine.idCine)
-                select new FuncionGridWrapper()
-                {
-                    //-----Capturo-----
-                    id_funcion = pf.idFuncion,
-                    id_pelicula = p.idPelicula,
-                    id_sala = s.idSala,
-                    tipo_funcion = pf.TipoFuncion.nombre,
-                    precio = pf.TipoFuncion.precio,
-                    //-----Capturo-----
-                    NombrePelicula = pf.Pelicula.titulo,
-                    horario = pf.fechaFuncion,
-                    sala = s.nombre
-                };
-            if (data == null)
-            {
-                MessageBox.Show("No existen funciones","Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                dgvFunciones.DataSource = data.ToList();
-            }
+           //dgvFunciones.DataSource = 
             
         }
 
@@ -123,9 +87,9 @@ namespace CineEvo.UI
             string tipo_funcion = dgvFunciones.SelectedRows[0].Cells[6].Value.ToString();
             
             //-----Preparo la data-----
-            Funcion funcion = objFuncionBL.ObtenerFuncion(id_funcion);//Testing
-            Pelicula pelicula = objPeliculaBL.ObtenerPelicula(id_pelicula);//Testing
-            Sala sala = objSalaBL.ObtenerSala(id_sala);//Testing
+            CFuncion funcion = objFuncionBL.Obtener(id_funcion);//Testing
+            CPelicula pelicula = objPeliculaBL.Obtener(id_pelicula);//Testing
+            CSala sala = objSalaBL.Obtener(id_sala);//Testing
 
             //-----Creo el formulario-----
             frmPrecios frmP = new frmPrecios();

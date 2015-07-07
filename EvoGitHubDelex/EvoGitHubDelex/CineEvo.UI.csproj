@@ -99,6 +99,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AsientoViewModel.cs" />
+    <Compile Include="ViewModel\SalaModel.cs" />
     <EmbeddedResource Include="Controls\BaseControl.resx">
       <DependentUpon>BaseControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,9 +179,9 @@
       <Project>{2032081d-9783-46d0-bc4e-f6740b14eb9a}</Project>
       <Name>CineEvo.BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CineEvo.DataModel\CineEvo.DataModel.csproj">
-      <Project>{7e96b91a-2267-43f1-8447-28685b100c72}</Project>
-      <Name>CineEvo.DataModel</Name>
+    <ProjectReference Include="..\CineEvo.Util\CineEvo.Util.csproj">
+      <Project>{e4e278e0-32a9-4e7f-ab93-7443974fe85a}</Project>
+      <Name>CineEvo.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,16 @@
-﻿using CineEvo.DataModel;
+﻿using CineEvo.BL.Base;
+using CineEvo.DataModel;
+using CineEvo.DataModel.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CineEvo.BE;
 
 namespace CineEvo.BL
 {
-    public class SalaBL
+    public class SalaBL : BaseBL<CSala,int>
     {
          #region Singleton declaration
         private CineEvoEntities DataContext;
@@ -20,20 +23,63 @@ namespace CineEvo.BL
         }
         #endregion
 
-        public IList<Sala> ObtenerSalas()
+        public void Insertar(CSala Entity)
+        {
+            //No se realizaran operaciones de insercion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public void Actualizar(CSala Entity)
+        {
+            //No se realizaran operaciones de actualizacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int Id)
+        {
+            //No se realizaran operaciones de eliminacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public CSala Obtener(int Id)
         {
             try
             {
-                return DataContext.Sala.ToList();
+                return SalaBL.FromEntity(DataContext.Sala.FirstOrDefault(x => x.idSala == Id));
             }
             catch (Exception e)
             {
-                throw new Exception("BL obtener salas : " + e.Message,e);
+                throw new Exception("SalaBL - obtener : " + e.Message, e);
             }
         }
-        public Sala ObtenerSala(int id)
+
+        public List<CSala> Listar()
         {
-            return DataContext.Sala.FirstOrDefault(x => x.idSala == id && x.estado=="ACT");
+            try
+            {
+                return (from s in DataContext.Sala.Where(X => X.estado.Equals(ConstantesModel.ESTADO_ACTIVO))
+                        select SalaBL.FromEntity(s)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("SalaBL - listar: " + e.Message, e);
+            }
         }
+
+        public static CSala FromEntity(Sala Entity)
+        {
+            return new CSala()
+            {
+                asientosLibres = Entity.asientosLibres,
+                capacidad = Entity.capacidad,
+                Cine = CineBL.FromEntity(Entity.Cine),
+                estado = Entity.estado,
+                idCine = Entity.idCine,
+                idSala = Entity.idSala,
+                nombre = Entity.nombre
+            };
+        }
+
+
     }
 }

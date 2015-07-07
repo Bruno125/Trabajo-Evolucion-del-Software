@@ -1,50 +1,98 @@
-﻿using System;
+﻿using CineEvo.BE;
+using CineEvo.BL.Base;
+using CineEvo.DataModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using CineEvo.DataModel;
-using CineEvo.Util;
 
 namespace CineEvo.BL
 {
-    public class AsientoBL
+    public class AsientoBL : BaseBL<CAsiento, int>
     {
-        private CineEvoEntities datacontext;
-
-        public AsientoBL()
+        #region Singleton impl
+        private CineEvoEntities DataContext;
+        private static AsientoBL instance = new AsientoBL();
+        private AsientoBL() { }
+        public static AsientoBL ObtenerInstancia()
         {
-            datacontext = new CineEvoEntities();
+            instance.DataContext = new CineEvoEntities();
+            return instance;
         }
-        public List<AsientoPintar> ListarAsiento()
-        {
-            return datacontext.AsientoPintar.ToList();
-        }
+        #endregion
 
-        public List<AsientosComprados> ObtenerAsientosComprados(int idSala)
+        public void Insertar(CAsiento Entity)
         {
-            return (from ap in datacontext.AsientoPintar
-                    join a in datacontext.Asiento
-                        on ap.codigo equals a.codigo
-                       where (a.idSala==idSala && a.estado=="VEN")
-                    select new AsientosComprados
-                    {
-                        AsientoId = a.idAsiento,
-                        codigo = a.codigo,
-                        X = ap.X,
-                        Y = ap.Y,
-                       
-                    }).ToList();
-
+            //No se realizaran operaciones de insercion para esta entidad
+            throw new NotImplementedException();
         }
 
-        public AsientoPintar obtenerAsientoPintar(string codigo)
+        public void Actualizar(CAsiento Entity)
         {
-            return datacontext.AsientoPintar.FirstOrDefault(x => x.codigo.Equals(codigo));
+            //No se realizaran operaciones de actualizacion para esta entidad
+            throw new NotImplementedException();
         }
 
+        public void Eliminar(int Id)
+        {
+            //No se realizaran operaciones de eliminacion para esta entidad
+            throw new NotImplementedException();
+        }
 
+        public CAsiento Obtener(int Id)
+        {
+            Asiento asiento = null;
+            try
+            {
+                asiento = DataContext.Asiento.Where(x => x.idAsiento == Id).Single();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("AsientoBL - obtener : " + e.Message, e);
+            }
+            return FromEntity(asiento);
+        }
+
+        public List<CAsiento> Listar()
+        {
+            try
+            {
+                return DataContext.Asiento.ToList().Select(x => FromEntity(x)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("AsientoBL - listar : " + e.Message, e);
+            }
+        }
+
+        public List<CAsiento> ListarPorSala(int idSala)
+        {
+            try
+            {
+                return DataContext.Asiento.Where(x => x.idSala == idSala).Select(x => FromEntity(x)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("AsientoBL - listar por sala : " + e.Message, e);
+            }
+        }
+
+        public CAsiento FromEntity(Asiento Entity)
+        {
+            CAsiento asiento = null;
+            if (Entity != null)
+            {
+                asiento = new CAsiento()
+                {
+                    codigo = Entity.codigo,
+                    estado = Entity.estado,
+                    idAsiento = Entity.idAsiento,
+                    idSala = Entity.idSala
+                };
+            }
+            return asiento;
+        }
 
     }
 }

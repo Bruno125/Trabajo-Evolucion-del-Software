@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsientoBL.cs" />
+    <Compile Include="AsientoPintarBL.cs" />
+    <Compile Include="Base\BaseBL.cs" />
+    <Compile Include="Base\BaseUtils.cs" />
     <Compile Include="CineBL.cs" />
     <Compile Include="FuncionBL.cs" />
     <Compile Include="PeliculaBL.cs" />
@@ -63,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CineEvo.BE\CineEvo.BE.csproj">
+      <Project>{7c27ae77-8934-4a91-9826-61b0aa0a30ee}</Project>
+      <Name>CineEvo.BE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CineEvo.DataModel\CineEvo.DataModel.csproj">
       <Project>{7e96b91a-2267-43f1-8447-28685b100c72}</Project>
       <Name>CineEvo.DataModel</Name>

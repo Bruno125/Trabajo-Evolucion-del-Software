@@ -6,30 +6,79 @@ using System.Threading.Tasks;
 
 using System.Data.Entity;
 using CineEvo.DataModel;
+using  CineEvo.BL.Base;
+using CineEvo.BE;
 
 namespace CineEvo.BL
 {
-    public class CineBL
+    public class CineBL : BaseBL<CCine,int>
     {
-        private CineEvoEntities datacontext;
-
-        public CineBL()
+        
+         #region Singleton declaration
+        private CineEvoEntities DataContext;
+        private static CineBL instance = new CineBL();
+        private CineBL() { }
+        public static CineBL ObtenerInstancia()
         {
-            datacontext = new CineEvoEntities();
+            instance.DataContext = new CineEvoEntities();
+            return instance;
+        }
+        #endregion
+
+        public void Insertar(CCine Entity)
+        {
+            //No se realizaran operaciones de insercion para esta entidad
+            throw new NotImplementedException();
         }
 
-        public List<Cine> ListarCines()
+        public void Actualizar(CCine Entity)
+        {
+            //No se realizaran operaciones de actualizacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int Id)
+        {
+            //No se realizaran operaciones de eliminacion para esta entidad
+            throw new NotImplementedException();
+        }
+
+        public CCine Obtener(int Id)
         {
             try
             {
-                return datacontext.Cine.ToList();
+                return  CineBL.FromEntity(DataContext.Cine.Where(x => x.idCine == Id).Single());
             }
-            catch (Exception E)
+            catch (Exception e)
             {
-                throw E;
+                throw new Exception("CineBl - obtener : " + e.Message, e);
             }
         }
 
+        public List<CCine> Listar()
+        {
+            try
+            {
+                return DataContext.Cine.ToList().Select(x=> FromEntity(x)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("CineBL - listar : " + e.Message, e);
+            }
+        }
+
+        public static CCine FromEntity(Cine Entity)
+        {
+            return new CCine()
+            {
+                 direccion = Entity.direccion,
+                 email = Entity.email,
+                 estado = Entity.estado,
+                 idCine = Entity.idCine,
+                 nombre = Entity.nombre,
+                 telefono = Entity.telefono
+            };
+        } 
 
     }
 }

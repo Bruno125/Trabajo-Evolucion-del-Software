@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 //Importaciones
 using CineEvo.BL;
-using CineEvo.DataModel;
+using CineEvo.BE;
 
 namespace CineEvo.UI
 {
@@ -19,10 +19,10 @@ namespace CineEvo.UI
         TipoEntradaBL objTipoEntradaBL = TipoEntradaBL.ObtenerInstancia();
 
         //Recibe data
-        public Cine cine;
-        public Funcion funcion ;
-        public Pelicula pelicula;
-        public Sala sala;
+        public CCine cine;
+        public CFuncion funcion ;
+        public CPelicula pelicula;
+        public CSala sala;
         public double precio;
         public String tipo_funcion;
 
@@ -38,7 +38,7 @@ namespace CineEvo.UI
 
             //Titulo
             this.Text = "Cine: " + cine.nombre.ToString();
-
+                
             //Oculto lo innecesario
             //dgvFunciones.Columns[0].Visible = false;
 
@@ -51,7 +51,7 @@ namespace CineEvo.UI
 
         public void CargarData()
         {
-            IList<TipoEntrada> entradas = objTipoEntradaBL.ObtenerTiposEntrada();
+            IList<CTipoEntrada> entradas = objTipoEntradaBL.Listar();
             var data = from e in entradas
                        select new FuncionGridWrapperEntrada()
                        {

@@ -97,6 +97,7 @@
     <Compile Include="TipoFuncion.cs">
       <DependentUpon>CineEvoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Util\ConstantesModel.cs" />
     <Compile Include="Venta.cs">
       <DependentUpon>CineEvoModel.tt</DependentUpon>
     </Compile>

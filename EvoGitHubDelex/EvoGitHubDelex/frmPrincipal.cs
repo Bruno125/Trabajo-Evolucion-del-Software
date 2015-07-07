@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-using CineEvo.DataModel;
 using CineEvo.BL;
 using CineEvo.UI.Controls;
 using CineEvo.BE;
+using CineEvo.UI.ViewModel;
 
 
 namespace CineEvo.UI
@@ -27,10 +27,10 @@ namespace CineEvo.UI
         List<string> ids;
         int w;
         int defineSeparador;
-        CCine controlador;
-        
+        SalaModel controlador;
+
         //atributos necesarios principales
-        CineBL objCineBL = new CineBL();
+        CineBL objCineBL = CineBL.ObtenerInstancia();
         int idCineSeleccionado;
         int nroHojaActual; //En que escena del formulario se esta actualmente
        
@@ -68,7 +68,6 @@ namespace CineEvo.UI
             int numFilas = 10, numCol = 20,contNumeros=1;
             int primerColBlanca = 4, segundaColBlanca = 15;
             char letra = 'A';
-            
 
             for (int i = 0; i < numFilas; i++)
             {
@@ -104,53 +103,6 @@ namespace CineEvo.UI
             xses.Add(x);
             yses.Add(y);
             ids.Add(id);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Dejen sus messagesboxes confirmando que lo probaron en su casa :D
-            MessageBox.Show("MUCHACHOS YA LO PROBÉ EN MI CASA - ALEX MATIAS DEL PIRÚ", "DELEX", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            MessageBox.Show("PROBADO - VICTOR CHUQUIHUACCHA", "TIME IS SO UNKIND", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            MessageBox.Show("POR FIN ME INSTALÉ VISUAL U_U", "BRUNO AYBAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //--
-            
-            //ESTO DE ABAJO UTILICE PARA LLENAR LOS ASIENTOS EN LA BASE DE DATOS :D
-            /*
-            try
-            {
-                //Permite conectarme a una BD
-                SqlConnection sqlCon = new SqlConnection();
-                //A qué BD voy a conectar
-                sqlCon.ConnectionString = "Data Source=.;Initial Catalog=CineEvo;Integrated Security=True"; ;
-                //Abrir la conexion para ejecutar comandos SQL
-                sqlCon.Open();
-                //Console.WriteLine("Se conectó a la BD " + sqlCon.ConnectionString);
-
-                for (int sala = 10; sala <= 18; sala++)
-                {
-                    for (int i = 0; i < ids.Count; i++)
-                    {
-                        SqlCommand command = new SqlCommand();
-                        command.Connection = sqlCon;
-                        command.CommandText = "INSERT INTO Asiento(codigo,idSala,estado) VALUES ('" + ids[i] + "',"+sala+",'ACT')";
-                        command.CommandType = CommandType.Text;
-                        command.ExecuteNonQuery();
-
-                    }
-                }
-                //Cerrar la conexion
-                sqlCon.Close();
-
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }*/
-            
-            
-            
-            Close();
-            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -191,10 +143,8 @@ namespace CineEvo.UI
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            
-            
             //ComboBox Cine
-            cbCines.DataSource = objCineBL.ListarCines();
+            cbCines.DataSource = objCineBL.Listar();
             cbCines.DisplayMember = "nombre";
             cbCines.ValueMember = "idCine";
             cbCines.SelectedIndex = -1;
@@ -218,70 +168,25 @@ namespace CineEvo.UI
         private void DesaparecerAparecerPagina1()
         {
             //--picCanchita
-            if (picCanchita.Visible)
-                picCanchita.Visible = false;
-            else
-                picCanchita.Visible = true;
-
+            picCanchita.Visible = !picCanchita.Visible;
             //--label Cartelera
-            if (lbCartelera.Visible)
-                lbCartelera.Visible = false;
-            else
-                lbCartelera.Visible = true;
-
+            lbCartelera.Visible = !lbCartelera.Visible;
             //--picBanner de Abajo
-            if (picBannerAbajo.Visible)
-                picBannerAbajo.Visible = false;
-            else
-                picBannerAbajo.Visible = true;
-
+            picBannerAbajo.Visible = !picBannerAbajo.Visible;
             //--picLogoCinepolis
-            if (picCinepolis.Visible)
-                picCinepolis.Visible = false;
-            else
-                picCinepolis.Visible = true;
-
+            picCinepolis.Visible = !picCinepolis.Visible;
             //--pic Quiero Cine
-            if (picQuieroCine.Visible)
-                picQuieroCine.Visible = false;
-            else
-                picQuieroCine.Visible = true;
-
-            //--btnConsultar
-            if (btnConsultar.Visible)
-                btnConsultar.Visible = false;
-            else
-                btnConsultar.Visible = true;
-
-
+            picQuieroCine.Visible = !picQuieroCine.Visible;
             //--panel Celeste
-            if (panelCeleste.Visible)
-                panelCeleste.Visible = false;
-            else
-                panelCeleste.Visible = true;
-
-
-           
+            panelCeleste.Visible = !panelCeleste.Visible;
+            //--btnConsultar
+            btnConsultar.Visible = !btnConsultar.Visible;
             //--picComprar
-            if (picComprar.Visible)
-                picComprar.Visible = false;
-            else
-                picComprar.Visible = true;
-
+            picComprar.Visible = !picComprar.Visible;
             //--picBotonComprar
-            if (picBotonComprar.Visible)
-                picBotonComprar.Visible = false;
-            else
-                picBotonComprar.Visible = true;
-
+            picBotonComprar.Visible = !picBotonComprar.Visible;
             //LabelNombre
-            if (lbNombreCine.Visible)
-                lbNombreCine.Visible = false;
-            else
-            {
-                lbNombreCine.Visible = true;
-            }
-
+            lbNombreCine.Visible = !lbNombreCine.Visible;
             //combos y labels
             if (cbCines.Visible && lbPreferencia.Visible && lbSeleccione.Visible)
             {
@@ -295,27 +200,12 @@ namespace CineEvo.UI
                 lbPreferencia.Visible = true;
                 lbSeleccione.Visible = true;
             }
-
-
-
             //aparecer dgvFunciones
-            if (dgvFunciones.Visible)
-                dgvFunciones.Visible = false;
-            else
-                dgvFunciones.Visible = true;
-
+            dgvFunciones.Visible = !dgvFunciones.Visible;
             //PicDelBACK
-            if (picBack.Visible)
-                picBack.Visible = false;
-            else
-                picBack.Visible = true;
-
+            picBack.Visible = !picBack.Visible;
             //BOTON
-            if (btnSiguiente.Visible)
-                btnSiguiente.Visible = false;
-            else
-                btnSiguiente.Visible = true;
-                       
+            btnSiguiente.Visible = !btnSiguiente.Visible;
         }
 
         public void PosicionesTamaniosControles()
@@ -554,9 +444,6 @@ namespace CineEvo.UI
 
              lbTotalNum.Left = 510;
              lbTotalNum.Top = 70;
-
-
-
          }
 
         private void btnComprar_Click(object sender, EventArgs e)
@@ -570,10 +457,10 @@ namespace CineEvo.UI
             //DESAPARECE LOS COMPONENTES DE LA PAGINA 1
             
             idCineSeleccionado = Convert.ToInt32(cbCines.SelectedValue.ToString());
-            lbNombreCine.Text = ((Cine)cbCines.SelectedItem).nombre;
+            lbNombreCine.Text = ((CCine)cbCines.SelectedItem).nombre;
 
             FuncionBL objFuncionBL = FuncionBL.ObtenerInstancia();
-            dgvFunciones.DataSource = objFuncionBL.ObtenerFuncionesRenovado(idCineSeleccionado);
+            dgvFunciones.DataSource = objFuncionBL.ListarFromCine(idCineSeleccionado);
             
             dgvFuncionesConfigurar();
            
@@ -662,7 +549,7 @@ namespace CineEvo.UI
                 int cantNiniosViejos = Convert.ToInt32(dgvPrecios.Rows[1].Cells["dgvCbCantidad"].Value.ToString());
 
                 SalaBL objSalaBL = SalaBL.ObtenerInstancia();
-                Sala consultar=objSalaBL.ObtenerSala(idSala);
+                CSala consultar=objSalaBL.Obtener(idSala);
 
                 if(consultar.asientosLibres<(cantGeneral+cantNiniosViejos)) //si la cant que escogio es mayor que la cantidad de asientos libres
                 {
@@ -671,7 +558,7 @@ namespace CineEvo.UI
                 }
 
                 //AQUI SI ENTRARIA A LA OTRA PANTALLA DE MAPA
-                controlador = new CCine(idSala);
+                controlador = new SalaModel(idSala);
                 cantEntradasEscogidas = cantGeneral + cantNiniosViejos;
                 DesaparecerAparecerPagina3();                               
 
@@ -806,7 +693,7 @@ namespace CineEvo.UI
         {
             if(mostrarMapa)
             {
-                CAsiento seleccionar = controlador.traerAsientoClickeado(e.X, e.Y,cantEntradasEscogidas);
+                AsientoViewModel seleccionar = controlador.traerAsientoClickeado(e.X, e.Y,cantEntradasEscogidas);
                 if (seleccionar != null)
                     seleccionar.seleccionado = !seleccionar.seleccionado;
             }
