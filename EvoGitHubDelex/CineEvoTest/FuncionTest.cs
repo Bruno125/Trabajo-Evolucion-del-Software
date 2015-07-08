@@ -46,7 +46,7 @@ namespace CineEvoTest
             if(Funciones.Count>0)
                 foreach (CFuncion a in Funciones)
                 {
-                    bool isToday = a.horario.Date == Now.Date;
+                    bool isToday = a.horario.Date == Now.Date.Date;
                     bool isBeforeTime = Now.TimeOfDay < a.horario.TimeOfDay;
                     Assert.IsTrue(isToday);
                     Assert.IsTrue(isBeforeTime);
