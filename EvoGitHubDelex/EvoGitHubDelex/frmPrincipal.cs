@@ -13,6 +13,7 @@ using CineEvo.BL;
 using CineEvo.UI.Controls;
 using CineEvo.BE;
 using CineEvo.UI.ViewModel;
+using System.Drawing.Printing;
 
 
 namespace CineEvo.UI
@@ -723,7 +724,10 @@ namespace CineEvo.UI
                     SalaBL objSalaBL = SalaBL.ObtenerInstancia();
                     objSalaBL.ActualizarAsientosLibres(idSala, cantEntradasEscogidas);
 
-                    MessageBox.Show("Venta registrada exitosamente", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //--Mostrar dialog para imprimir la boleta
+                    Imprimir();
+
+                    //MessageBox.Show("Venta registrada exitosamente", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //frmPrincipal_Load(sender,e);
                     DesaparecerAparecerPagina5();
                     AparecerPagina1();
@@ -746,7 +750,64 @@ namespace CineEvo.UI
 
             nroHojaActual++;
         }
-        
+
+        private void Imprimir()
+        {
+            //printFont = new Font("Arial", 10);
+            //PrintDocument pd = new PrintDocument();
+            //pd.PrintPage += new PrintPageEventHandler
+            //   (this.pd_PrintPage);
+            //pd.Print();
+            PrintDocument ticket = new PrintDocument();
+            ticket.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+            ticket.Print();
+            //PrintPreviewDialog printPrevDialog = new PrintPreviewDialog();
+            //printPrevDialog.Document = ticket;
+            //printPrevDialog.Show();
+        }
+
+        private Font fuenteTitulo = new Font("Courier New", 15,FontStyle.Bold);
+        private Font fuenteDatos = new Font("Courier New", 10);
+        private Font fuentePrecios = new Font("Courier New", 12,FontStyle.Bold);
+        private float pos_x = 40,pos_y=60;
+        // The PrintPage event is raised for each page to be printed.
+        private void pd_PrintPage(object sender, PrintPageEventArgs evento)
+        {
+            int tamaño=400;
+            pos_x = 40;
+            pos_y=30;
+            String Cine = LblCine.Text;
+            String Pelicula = LblPelicula.Text;
+            String Total = "Total: " +  LblTotalPago.Text;
+            String Vuelto = "Vuelto: " + LblVuelto.Text;
+            String Sala = "Sala: " + LblSala.Text;
+            String Fecha = "Fecha: " + LblFecha.Text;
+            String Asientos = "Asientos: " + LblAsientos.Text;
+
+            //Esto se imprime
+            DrawCenteredString(Cine,fuenteTitulo,evento,tamaño,true);
+            DrawCenteredString(Pelicula,fuenteTitulo,evento,tamaño,true);
+            DrawCenteredString("--------------------------------",fuenteTitulo,evento,tamaño,true);
+            DrawCenteredString(Sala,fuenteDatos,evento,tamaño,false);
+            DrawCenteredString(Fecha,fuenteDatos,evento,tamaño,false);
+            DrawCenteredString(Asientos,fuenteDatos,evento,tamaño,false);
+            DrawCenteredString(Total, fuentePrecios, evento, tamaño,false);
+            DrawCenteredString(Vuelto, fuentePrecios, evento, tamaño,false);
+        }
+
+        private void DrawCenteredString(string Text,Font font, PrintPageEventArgs evento, int Width,bool IsCentered)
+        {
+            float ProyectedWidth = evento.Graphics.MeasureString(Text, font).Width;
+            float ProyectedHeight = evento.Graphics.MeasureString(Text, font).Height;
+            float StartX = (Width - ProyectedWidth) / 2;
+            if(true)
+                evento.Graphics.DrawString(Text, font, Brushes.Black, StartX, pos_y, new StringFormat());
+            else
+                evento.Graphics.DrawString(Text, font, Brushes.Black, pos_x, pos_y, new StringFormat());
+            pos_y += ProyectedHeight + 5;
+        }
+
+
         private void dgvPrecios_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             /*

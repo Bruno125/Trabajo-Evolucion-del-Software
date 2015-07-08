@@ -77,13 +77,17 @@ using CineEvo.DataModel.Util;
                  * para poder pasar las pruebas unitarias satisfactoriamente.
                 */
 
-                //if(funciones!=null)
-                //    funciones = funciones.Where(f => (f.fechaFuncion.Date == DateTime.Now &&
-                //                              f.fechaFuncion.TimeOfDay < DateTime.Now.TimeOfDay)).ToList();
+                if (funciones != null)
+                    funciones = funciones.Where(f => FuncionEstaDisponible(f.fechaFuncion)).ToList();
             }catch(Exception e){
                 throw new Exception("FuncionBL - listar from cine: " + e.Message, e);
             }
             return (from f in funciones select FromEntity(f)).ToList();
+        }
+
+        private bool FuncionEstaDisponible(DateTime date)
+        {
+            return date.Date == DateTime.Now.Date && date.TimeOfDay > DateTime.Now.TimeOfDay;
         }
 
         private CFuncion FromEntity(Funcion f)
