@@ -28,6 +28,7 @@ namespace CineEvo.UI
         int w;
         int defineSeparador;
         SalaModel controlador;
+        List<Tuple<int, string>> listaRes;
 
         //atributos necesarios principales
         CineBL objCineBL = CineBL.ObtenerInstancia();
@@ -37,7 +38,7 @@ namespace CineEvo.UI
         int columnaSeleccionada;
         int filaSeleccionada;
         bool cambioValor;
-        int idSala,cantEntradasEscogidas;
+        int idSala,cantEntradasEscogidas,idTipoEntrada,idFuncion;
         bool mostrarMapa;
 
         public frmPrincipal()
@@ -55,6 +56,8 @@ namespace CineEvo.UI
             defineSeparador = 7;
             filaSeleccionada = -1;
             idSala = -1;
+            idTipoEntrada = -1;
+            idFuncion = -1;
             bmpUser = new Bitmap(this.pcUser.Image);
             generarCoordenadas();
 
@@ -143,6 +146,10 @@ namespace CineEvo.UI
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            this.Width = 767;
+            this.Height = 527;
+            CenterToScreen();
+
             //ComboBox Cine
             cbCines.DataSource = objCineBL.Listar();
             cbCines.DisplayMember = "nombre";
@@ -165,8 +172,11 @@ namespace CineEvo.UI
             //Evento cuando cierra el form
         }
 
-        private void DesaparecerAparecerPagina1()
+        private void AparecerPagina1()
         {
+            btnSiguiente.Visible = !btnSiguiente.Visible;
+            picBack.Visible = !picBack.Visible;
+
             //--picCanchita
             picCanchita.Visible = !picCanchita.Visible;
             //--label Cartelera
@@ -181,6 +191,47 @@ namespace CineEvo.UI
             panelCeleste.Visible = !panelCeleste.Visible;
             //--btnConsultar
             btnConsultar.Visible = !btnConsultar.Visible;
+            //--picComprar
+            picComprar.Visible = !picComprar.Visible;
+            //--picBotonComprar
+            picBotonComprar.Visible = !picBotonComprar.Visible;
+            //LabelNombre
+            lbNombreCine.Visible = !lbNombreCine.Visible;
+            //combos y labels
+            if (cbCines.Visible && lbPreferencia.Visible && lbSeleccione.Visible)
+            {
+                cbCines.Visible = false;
+                lbPreferencia.Visible = false;
+                lbSeleccione.Visible = false;
+            }
+            else
+            {
+                cbCines.Visible = true;
+                lbPreferencia.Visible = true;
+                lbSeleccione.Visible = true;
+            }
+
+         
+        }
+
+        private void DesaparecerAparecerPagina1()
+        {
+            //--picCanchita
+            picCanchita.Visible = !picCanchita.Visible;
+            //--label Cartelera
+            lbCartelera.Visible = !lbCartelera.Visible;
+            //--picBanner de Abajo
+            picBannerAbajo.Visible = !picBannerAbajo.Visible;
+            //--picLogoCinepolis
+            picCinepolis.Visible = !picCinepolis.Visible;
+            //--pic Quiero Cine
+            picQuieroCine.Visible = !picQuieroCine.Visible;
+
+            //--btnConsultar
+            btnConsultar.Visible = !btnConsultar.Visible;
+            //--panel Celeste
+            panelCeleste.Visible = !panelCeleste.Visible;
+          
             //--picComprar
             picComprar.Visible = !picComprar.Visible;
             //--picBotonComprar
@@ -446,6 +497,21 @@ namespace CineEvo.UI
              lbTotalNum.Top = 70;
          }
 
+        private void DesaparecerAparecerPagina4()
+         {
+
+             mostrarMapa = !mostrarMapa;
+             panelPago.Visible = !panelPago.Visible;
+            //Posicionamiento
+             panelPago.Left = 110;
+             panelPago.Top = 70;
+         }
+
+        private void DesaparecerAparecerPagina5()
+        {
+            panelPago.Visible = !panelPago.Visible;
+        }
+
         private void btnComprar_Click(object sender, EventArgs e)
         {
             if (cbCines.SelectedItem == null)
@@ -509,6 +575,14 @@ namespace CineEvo.UI
             {
                 DesaparecerAparecerPagina3();
             }
+            else if (nroHojaActual == 5)
+            {
+                DesaparecerAparecerPagina4();
+            }
+            else if(nroHojaActual==6)
+            {
+                DesaparecerAparecerPagina5();
+            }
 
             nroHojaActual--;
 
@@ -528,6 +602,8 @@ namespace CineEvo.UI
                 TipoEntradaBL objTipoEntradaBL = TipoEntradaBL.ObtenerInstancia();
                 double precio = Convert.ToDouble(dgvFunciones.SelectedRows[0].Cells["precio"].Value.ToString());
                 idSala = Convert.ToInt32(dgvFunciones.SelectedRows[0].Cells["id_sala"].Value.ToString());
+                idFuncion = Convert.ToInt32(dgvFunciones.SelectedRows[0].Cells["id_funcion"].Value.ToString());
+                
                 //DE AQUI CAPTURO TODO PERO SOLO PRECIO POR AHORA
                 dgvPrecios.DataSource = objTipoEntradaBL.ObtenerTiposEntradas(precio);
                 dgvPreciosConfigurar();
@@ -573,29 +649,100 @@ namespace CineEvo.UI
                 //TODO: integra cabio de victor
                 //-----                
                 //------                
-                //PRUEBA - VICTOR                
-
-                frmPago frm = new frmPago();
-
-                //Estos datos deben obtenerse de la pantalla previa
-                frm.TotalPago = 50;
-                frm.Cine = "Prueba Cine";
-                frm.Pelicula = "Prueba Pelicula";
-                frm.FechaFuncion = DateTime.Now;
-                frm.TipoPelicula = "2D";
-                frm.Sala = "Sala CR7";
-                //Pasar datos reales obtenidos en la anterior ventana
-                //Datos referentes a las entradas y sala
-
-                frm.Show();
                 //PRUEBA - VICTOR
-                //------
-                //-----
-                //---
+                                
+                //Muestro la pantalla de pago
+                DesaparecerAparecerPagina4();
+                LblTotalPago.Text = lbTotalNum.Text;
+                LblCine.Text = lbNombreCine.Text;
+                LblPelicula.Text = dgvFunciones.SelectedRows[0].Cells["NombrePelicula"].Value.ToString();
+                LblFecha.Text = dgvFunciones.SelectedRows[0].Cells["horario"].Value.ToString().Substring(0, 10);
+                LblHorario.Text = dgvFunciones.SelectedRows[0].Cells["horario"].Value.ToString().Substring(11);
+                LblTipoPelicula.Text = dgvFunciones.SelectedRows[0].Cells["tipo_funcion"].Value.ToString();
+                LblSala.Text = dgvFunciones.SelectedRows[0].Cells["sala"].Value.ToString();
+                LblCantidadAsientos.Text = cantEntradasEscogidas.ToString();                
+                listaRes = new List<Tuple<int, string>>();
+                listaRes = controlador.listaDeCodigosSeleccionados(idSala);
+                String acumular="";
+                for (int i = 0; i < listaRes.Count;i++)
+                {
+                    acumular += listaRes[i].Item2;
+                    if(i!=listaRes.Count-1)
+                    {
+                        acumular += ", ";
+                    }
+                }
+                LblAsientos.Text = acumular;
 
-                return;
+                //Dinero a pagar
+                double TotalPago = Double.Parse(LblTotalPago.Text.ToString());
+                //Cantidad que se acaba de ingresar
+                double DineroIngresado = Double.Parse(LblDineroIngresado.Text.ToString());
+                //Valido que el saldo cubra el Total de Dinero
+                if (TotalPago > DineroIngresado)
+                {
+                    LblVuelto.Text = "0";
+                }
+                else
+                {
+                    //Mostar un mensaje que ya se puede efectuar el pago
+                    //Bloquear el ingreso de monedas
+                    LblVuelto.Text = (-1 * (TotalPago - DineroIngresado)).ToString();
+                }
+
             }
+            else if (nroHojaActual == 5)
+            {
+                if(!(Double.Parse(LblTotalPago.Text.ToString())<Double.Parse(LblDineroIngresado.Text.ToString())))
+                {
+                    MessageBox.Show("No cuenta con el saldo suficiente para efectuar la compra", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (MessageBox.Show("¿Esta seguro de su transacción?", "CINEPOLIS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //Oculto la pantalla de pago
+                    //DesaparecerAparecerPagina5();
+                    //AQUI ACTUALIZO LOS ASIENTOS :D
+                    AsientoBL objAsientoBL = AsientoBL.ObtenerInstancia();
+                    VentaBL objVentaBL = new VentaBL();
+                    for (int i = 0; i < listaRes.Count; i++)
+                    {
+                        objAsientoBL.VenderAsiento(listaRes[i].Item1);
+                    }
 
+                    //--Registrar la venta :D
+                    int idVenta = objVentaBL.RegistrarVenta(Convert.ToDouble(lbTotalNum.Text.ToString()));
+                    //--Registrar las entradas
+                    objVentaBL = new VentaBL();
+                    for (int i = 0; i < listaRes.Count; i++)
+                    {
+                        objVentaBL.RegistrarEntrada(idFuncion, listaRes[i].Item1, idVenta);
+                    }
+
+                    //--Actualizar la sala quitandole asientos libres
+                    SalaBL objSalaBL = SalaBL.ObtenerInstancia();
+                    objSalaBL.ActualizarAsientosLibres(idSala, cantEntradasEscogidas);
+
+                    MessageBox.Show("Venta registrada exitosamente", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //frmPrincipal_Load(sender,e);
+                    DesaparecerAparecerPagina5();
+                    AparecerPagina1();
+                    dgvPrecios.Columns.Remove("dgvCbCantidad");
+                    dgvPrecios.Columns.Remove("dgvCbTotal");
+                    nroHojaActual = 1;
+                    LblTotalPago.Text = "0";
+                    LblDineroIngresado.Text = "0";
+                    LblVuelto.Text = "0";
+                    return;
+
+                }
+                else
+                    return;
+               // MessageBox.Show("YA ESTAN VENDIDAS");
+                   
+               
+            }
+           
 
             nroHojaActual++;
         }
@@ -697,6 +844,39 @@ namespace CineEvo.UI
                 if (seleccionar != null)
                     seleccionar.seleccionado = !seleccionar.seleccionado;
             }
+
+        }
+        
+        private void BtnDinero_Click(object sender, EventArgs e)
+        {
+            int aumenta = 0;
+            aumenta = 10;
+
+            //Dinero a pagar
+            double TotalPago = Double.Parse(LblTotalPago.Text.ToString());
+            //Cantidad que se acaba de ingresar
+            double DineroIngresado = Double.Parse(LblDineroIngresado.Text.ToString());
+            //Actualizo el dinero
+            LblDineroIngresado.Text = (DineroIngresado + aumenta).ToString();
+            //Re-calculo del dinero actual
+            DineroIngresado = Double.Parse(LblDineroIngresado.Text.ToString());
+
+            
+            //Valido que el saldo cubra el Total de Dinero
+            if (TotalPago > DineroIngresado)
+            {
+                LblVuelto.Text = "0";
+            }
+            else
+            {
+                //Mostar un mensaje que ya se puede efectuar el pago
+                //Bloquear el ingreso de monedas
+                LblVuelto.Text = (-1 * (TotalPago - DineroIngresado)).ToString();
+            }
+        }
+
+        private void panelPago_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     

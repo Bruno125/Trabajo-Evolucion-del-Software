@@ -98,5 +98,23 @@ namespace CineEvo.BL
             return asiento;
         }
 
+        public Asiento ObtenerAsientoPorID(int idAsiento)
+        {
+            return DataContext.Asiento.Where(x => x.estado == "ACT" && x.idAsiento == idAsiento).FirstOrDefault();
+        }
+
+        public void VenderAsiento(int idAsiento)
+        {
+            Asiento objAsiento = ObtenerAsientoPorID(idAsiento);
+
+            if (objAsiento != null)
+            {
+                //CAMBIARE TODO LOS QUE NO SON FOREIGN NI ESTADO
+                objAsiento.estado = "VEN";
+                DataContext.SaveChanges();
+            }
+
+        } 
+
     }
 }

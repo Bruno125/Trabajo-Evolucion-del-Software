@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CineEvoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CineEvoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Asiento">
           <Key>
             <PropertyRef Name="idAsiento" />
@@ -18,8 +18,8 @@
           <Key>
             <PropertyRef Name="codigo" />
           </Key>
-          <Property Name="X" Type="int" />
-          <Property Name="Y" Type="int" />
+          <Property Name="X" Type="int" Nullable="false" />
+          <Property Name="Y" Type="int" Nullable="false" />
           <Property Name="codigo" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="Calificacion">
@@ -315,8 +315,7 @@
             <End Role="Sala" EntitySet="Sala" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CineEvoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -335,8 +334,8 @@
           <Key>
             <PropertyRef Name="codigo" />
           </Key>
-          <Property Name="X" Type="Int32" />
-          <Property Name="Y" Type="Int32" />
+          <Property Name="X" Type="Int32" Nullable="false" />
+          <Property Name="Y" Type="Int32" Nullable="false" />
           <Property Name="codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Calificacion">

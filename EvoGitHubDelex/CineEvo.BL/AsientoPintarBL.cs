@@ -100,5 +100,12 @@ namespace CineEvo.BL
 
         }
 
+        public int obtenerAsiento(int idSala,string codigo)
+        {
+            Asiento aux = DataContext.Asiento.Where(x => x.idSala == idSala && x.codigo.Equals(codigo)).FirstOrDefault();
+
+            return aux.idAsiento;
+        }
+
     }
 }

@@ -80,6 +80,17 @@ namespace CineEvo.BL
             };
         }
 
+        public Sala ObtenerSalaID(int idSala)
+        {
+            return DataContext.Sala.Where(x => x.estado == "ACT" && x.idSala == idSala).FirstOrDefault();
+        }
+        public void ActualizarAsientosLibres(int idSala,int cantEntradasEscogidas)
+        {
+            Sala actualizar = ObtenerSalaID(idSala);
+            actualizar.asientosLibres = actualizar.asientosLibres - cantEntradasEscogidas;
+            DataContext.SaveChanges();
+        }
+
 
     }
 }

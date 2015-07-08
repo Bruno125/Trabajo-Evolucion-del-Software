@@ -17,6 +17,33 @@ namespace CineEvo.BL
             datacontext = new CineEvoEntities();
         }
 
+        public int RegistrarVenta(double montoTotal)
+        {
+            Venta nuevo = new Venta();
+            nuevo.totalPrecio = montoTotal;
+            nuevo.fechaVenta = DateTime.Now;
+            nuevo.estado = "ACT";
+
+            datacontext.Venta.Add(nuevo);
+
+            datacontext.SaveChanges();
+
+            return nuevo.idVenta;
+        }
+
+        public void RegistrarEntrada(int idFuncion,int idAsiento,int idVenta)
+        {
+            Entrada nuevo = new Entrada();
+            nuevo.idAsiento = idAsiento;
+            nuevo.idFuncion = idFuncion;
+            nuevo.idVenta = idVenta;
+            nuevo.idTipoEntrada = 3;
+            nuevo.estado = "ACT";
+
+            datacontext.Entrada.Add(nuevo);
+            datacontext.SaveChanges();
+        }
+
         /*
         public Venta obtenerVentaExistente(int AsientoId)
         {

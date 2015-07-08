@@ -158,5 +158,25 @@ namespace CineEvo.UI.ViewModel
                 return false;
                
         }
+    
+        public List<Tuple<int,string>> listaDeCodigosSeleccionados(int idSala)
+        {
+            AsientoPintarBL objAsientoPintarBL=AsientoPintarBL.ObtenerInstancia();
+            List<Tuple<int, string>> listaRes = new List<Tuple<int, string>>();
+            Tuple<int, string> par;
+            foreach (AsientoViewModel a in listaAsientos)
+            {
+                if (a.seleccionado == true)
+                {
+                    a.AsientoId = objAsientoPintarBL.obtenerAsiento(idSala, a.codigo);
+
+                    par = new Tuple<int, string>(a.AsientoId, a.codigo);
+                    listaRes.Add(par);
+                }
+            }           
+
+            return listaRes;
+        }
+    
     }
 }
