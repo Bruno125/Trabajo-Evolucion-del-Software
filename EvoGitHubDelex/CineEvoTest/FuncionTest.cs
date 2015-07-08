@@ -42,14 +42,11 @@ namespace CineEvoTest
         public void ValidateFuncionesFromToday(FuncionsPorCineTest input)
         {
             List<CFuncion> Funciones = FuncionBL.ListarFromCine(input.idCine);
-            DateTime Now = DateTime.Now;
             if(Funciones.Count>0)
                 foreach (CFuncion a in Funciones)
                 {
-                    bool isToday = a.horario.Date == Now.Date.Date;
-                    bool isBeforeTime = Now.TimeOfDay < a.horario.TimeOfDay;
-                    Assert.IsTrue(isToday);
-                    Assert.IsTrue(isBeforeTime);
+                    Assert.IsTrue( a.horario.Date == DateTime.Now.Date);
+                    Assert.IsTrue( a.horario.TimeOfDay > DateTime.Now.TimeOfDay);
                 }
         }
 
