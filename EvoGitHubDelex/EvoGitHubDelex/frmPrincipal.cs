@@ -727,7 +727,7 @@ namespace CineEvo.UI
                     //--Mostrar dialog para imprimir la boleta
                     Imprimir();
 
-                    //MessageBox.Show("Venta registrada exitosamente", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Venta registrada exitosamente", "CINEPOLIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //frmPrincipal_Load(sender,e);
                     DesaparecerAparecerPagina5();
                     AparecerPagina1();

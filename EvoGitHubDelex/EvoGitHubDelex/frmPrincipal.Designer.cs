@@ -681,11 +681,12 @@
             // 
             // BtnDinero
             // 
-            this.BtnDinero.Location = new System.Drawing.Point(61, 144);
+            this.BtnDinero.FlatAppearance.BorderSize = 0;
+            this.BtnDinero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDinero.Location = new System.Drawing.Point(23, 144);
             this.BtnDinero.Name = "BtnDinero";
-            this.BtnDinero.Size = new System.Drawing.Size(57, 54);
+            this.BtnDinero.Size = new System.Drawing.Size(142, 123);
             this.BtnDinero.TabIndex = 6;
-            this.BtnDinero.Text = "10$";
             this.BtnDinero.UseVisualStyleBackColor = true;
             this.BtnDinero.Click += new System.EventHandler(this.BtnDinero_Click);
             // 
